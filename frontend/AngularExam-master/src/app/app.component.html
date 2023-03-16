@@ -1,0 +1,15 @@
+<app-header></app-header>
+
+<app-presentation *ngIf="loggedUser.length === 0"></app-presentation>
+
+<ng-container *ngIf="loggedUser.length > 0">
+
+  <app-secod-nav></app-secod-nav>
+
+  <app-collection *ngIf="currentView === 'collection'"></app-collection>
+
+  <app-user-profile *ngIf="currentView === 'profile'"></app-user-profile>
+
+</ng-container>
+
+<app-footer></app-footer>

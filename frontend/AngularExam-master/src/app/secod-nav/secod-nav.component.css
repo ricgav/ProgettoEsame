@@ -1,0 +1,34 @@
+:host {
+  grid-row-start: v-center-top;
+  grid-row-end: footer;
+  grid-column-start: left-col;
+  grid-column-end: h-center;
+  background-color: rgb(220, 220, 220);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+p {
+  background-color: white;
+  border: 1px solid rgb(40, 40, 40);
+  border-radius: 12px;
+  padding: 10px 15px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p:hover {
+  background-color: rgb(220, 220, 220);
+}
+
+p.selected {
+  background-color: pink;
+  border: 1px solid rgb(40, 40, 40);
+  border-radius: 12px;
+  padding: 10px 15px;
+}

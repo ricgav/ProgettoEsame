@@ -1,0 +1,11 @@
+:host, .collectible {
+  grid-row-start: v-center-top;
+  grid-row-end: footer;
+  grid-column-start: h-center;
+  grid-column-end: end;
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+}

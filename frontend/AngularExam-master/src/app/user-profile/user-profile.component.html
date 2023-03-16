@@ -1,0 +1,13 @@
+<div class="user-card">
+  <h2 class="user-card-title">{{user.nome}} {{user.cognome}}</h2>
+  <div class="user-card-content">
+    <img class="profile-picture" src="assets/{{user.image}}" width="400">
+    <div class="user-card-text">
+      <p [innerHTML]="user.descrizione"> </p>
+    </div>
+  </div>
+  <blockquote>
+    {{user.citazione}}
+    ({{user.autore}})
+  </blockquote>
+</div>
