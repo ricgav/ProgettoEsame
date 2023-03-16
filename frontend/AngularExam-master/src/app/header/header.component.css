@@ -3,9 +3,19 @@
   grid-row-end: v-center-top;
   grid-column-start: left-col;
   grid-column-end: end;
-  background-color: rgb(220, 220, 220);
+  background-color: white;
   display: flex;
   padding: 10px;
   justify-content: space-between;
   align-items: center;
 }
+a{
+  display: block;
+margin-left: auto;
+
+  width: 100px;
+  text-align: center;
+}
+
+
+

@@ -1,5 +1,4 @@
 :host {
-  padding: 10px;
   grid-row-start: v-center-top;
   grid-row-end: footer;
   grid-column-start: left-col;
@@ -11,7 +10,9 @@
 }
 
 :host > img {
-  width: 40vw;
+  width: 90%;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 :host > p {
