@@ -1,6 +1,5 @@
 package com.progetto.esame.userservice.model;
 
-import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 
