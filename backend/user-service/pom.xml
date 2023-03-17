@@ -41,6 +41,12 @@
 			<artifactId>javassist</artifactId>
 			<version>3.23.1-GA</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.22</version>
+			<scope>provided</scope>
+		</dependency>
 		<!-- API, java.xml.bind module -->
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
