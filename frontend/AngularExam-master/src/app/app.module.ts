@@ -9,6 +9,7 @@ import { PresentationComponent } from './presentation/presentation.component';
 import { SecodNavComponent } from './secod-nav/secod-nav.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CollectionComponent } from './collection/collection.component';
+import { CarouselHomeComponent } from './carousel-home/carousel-home.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CollectionComponent } from './collection/collection.component';
     PresentationComponent,
     SecodNavComponent,
     UserProfileComponent,
-    CollectionComponent
+    CollectionComponent,
+    CarouselHomeComponent
   ],
   imports: [
     BrowserModule,
