@@ -4,6 +4,8 @@ import com.progetto.esame.userservice.model.User;
 import com.progetto.esame.userservice.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +17,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserService {
 
-    //che cazzo è final?
     private final UserRepository userRepository;
 
     @Transactional
@@ -23,6 +24,31 @@ public class UserService {
         List<User> userList = new ArrayList<>();
         userRepository.findAll().forEach(userList::add);
         return userList;
+    }
+
+    /*public boolean login (String mail) {
+        Optional<User> optUser = userRepository.findByMail(mail);
+        if (optUser.isPresent()) {
+            User user = optUser.get();
+            if (user.getPassword() == "test") {
+                return true;
+            }
+            else return false;
+        }
+        else return false;
+    }*/
+
+    public boolean login (User user, String password) {
+        if (user.getPassword().equals(password)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public Optional<User> mailExists (String mail) {
+        return userRepository.findByMail(mail);
     }
 
     @Transactional

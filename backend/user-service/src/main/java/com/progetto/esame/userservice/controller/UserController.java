@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -44,7 +45,7 @@ public class UserController {
 		//return users;
 	}
 
-	@PostMapping(value = "/users/create")
+	@PostMapping("/users/create")
 	public ResponseEntity<?> createUser (@RequestBody User user){
 		try {
 			return new ResponseEntity<>(
@@ -54,6 +55,41 @@ public class UserController {
 			return errorResponse();
 		}
 	}
+
+	@GetMapping("/login")
+	public ResponseEntity<?>  userLogin (@RequestParam String mail, @RequestParam String password) {
+		System.out.println("Login...");
+		Optional<User> optUser = userService.mailExists(mail);
+		if (optUser.isPresent()) {
+			User user = optUser.get();
+			if (userService.login(user, password)) {
+
+				return new ResponseEntity<>(
+						user,
+						HttpStatus.OK);
+			}
+			else {
+				return errorLoginResponse(mail);
+			}
+		} else {
+			return errorUserNotFound(mail);
+		}
+
+	}
+
+	/*@GetMapping("/login")
+	public ResponseEntity<?> login (@RequestParam String mail){
+		//System.out.println(params);
+		//System.out.println(params.values());
+		if (userService.login(mail)) {
+			return new ResponseEntity<>(
+					"Login successful",
+					HttpStatus.OK);
+		}
+		else {
+			return errorResponse();
+		}
+	}*/
 
 	@GetMapping("/users/{id}")
 	public ResponseEntity<?> getUserById(@PathVariable("id") long id) {
@@ -127,6 +163,14 @@ public class UserController {
 
 	private ResponseEntity<String> errorResponse(){
 		return new ResponseEntity<>("Something went wrong :(", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	private ResponseEntity<String> errorLoginResponse(String mail) {
+		return new ResponseEntity<>("Wrong password for user with mail: " + mail, HttpStatus.FORBIDDEN);
+	}
+
+	private ResponseEntity<String> errorUserNotFound(String mail){
+		return new ResponseEntity<>("No user found with mail: " + mail, HttpStatus.NOT_FOUND);
 	}
 
 	private ResponseEntity<String> noUserFoundResponse(Long id){
