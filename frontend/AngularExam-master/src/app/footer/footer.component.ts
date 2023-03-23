@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 
 export class FooterComponent {
-  author: string = "Davide Marietti";
+  author: string = "Ares";
   copyrigthYear: number = 2023;
-  mail: string = "davide.marietti@gmail.com";
+  mail: string = "ares@gmail.com";
   aumentaCopy() {
     this.copyrigthYear = this.copyrigthYear +1;
   }

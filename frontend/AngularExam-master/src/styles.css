@@ -16,11 +16,8 @@ body {
 
 .user-logins {
   display: flex;
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: x-large;
-  margin-right: 50px;
-  margin-inline-end: auto;
-  margin-top: 5%;
 
 }
 
@@ -43,7 +40,7 @@ font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .user-logins > p:hover, .second-nav > p:hover {
-  background-color: rgb(220, 220, 220);
+  background-color: rgb(215,193,96);
 }
 
 .logo {

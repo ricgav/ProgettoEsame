@@ -1,12 +1,12 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-collection',
-  templateUrl: './collection.component.html',
-  styleUrls: ['./collection.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 
-export class CollectionComponent {
+export class LoginComponent {
   @Input() navbutton!: string;
   @Output() nav: EventEmitter<string> = new EventEmitter<string>();
 }
