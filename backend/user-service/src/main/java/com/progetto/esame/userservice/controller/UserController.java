@@ -45,11 +45,14 @@ public class UserController {
 	}
 
 	@PostMapping(value = "/users/create")
-	public User postUser(@RequestBody User user) {
-
-		User _user = repository.save(new User(user.getMail(),user.getName(),
-				user.getSurname(), user.getPassword(),user.getAddress(),user.isSeller()));
-		return _user;
+	public ResponseEntity<?> createUser (@RequestBody User user){
+		try {
+			return new ResponseEntity<>(
+					userService.saveNewUser(user),
+					HttpStatus.CREATED);
+		} catch (Exception e) {
+			return errorResponse();
+		}
 	}
 
 	@GetMapping("/users/{id}")
