@@ -38,7 +38,7 @@ public class UserController {
 			return errorResponse();
 		}
 
-		// ----- OLD VERSIONE DEL DIOCANE
+		// ----- OLD VERSIONE
 		//List<User> users = new ArrayList<>();
 		//repository.findAll().forEach(users::add);
 		//return users;
@@ -94,14 +94,14 @@ public class UserController {
 
 	@DeleteMapping("/users/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable("id") long id) {
-		System.out.println("Delete Customer with ID = " + id + "...");
+		System.out.println("Delete User with ID = " + id + "...");
 
 		try {
 			Optional<User> optUser = userService.getUserById(id);
 			if (optUser.isPresent()) {
 				userService.deleteUser(optUser.get());
 				return new ResponseEntity<>(
-						String.format("Kanban with id: %d was deleted", id),
+						String.format("User with id: %d was deleted", id),
 						HttpStatus.OK);
 			} else {
 				return noUserFoundResponse(id);
