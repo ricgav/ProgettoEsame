@@ -6,3 +6,8 @@
 - ./mvnw -DskipTests=true clean package
 - docker-compose build && docker-compose up
 - for testing you can find ".paw" file with all the api calls
+
+for Endriu;
+
+controllo quali ho installato
+- /usr/libexec/java_home -V
