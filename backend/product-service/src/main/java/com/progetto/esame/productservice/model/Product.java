@@ -16,6 +16,10 @@ public class Product {
 	@Column(name = "description")
 	private String description ;
 
+
+	@Column(name = "size")
+	private String size;
+
 	@Column(name = "price")
 	private float price;
 
@@ -25,17 +29,36 @@ public class Product {
 	@Column(name = "image")
 	private String image;
 
+	@Column(name = "sellerId")
+	private long sellerId;
+
 	public Product(){
 	}
 
-	public Product(String name, String description, float price, String type, String image) {
+	public Product(String name, String description, float price, String type, String image, long sellerId, String size) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.type = type;
 		this.image = image;
+		this.sellerId = sellerId;
+		this.size = size;
 	}
 
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+	public long getSellerId() {
+		return this.sellerId;
+	}
+
+	public void setSellerId(long sellerId) {
+		this.sellerId = sellerId;
+	}
 	public long getId() {
 		return this.id;
 	}

@@ -13,8 +13,8 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     Optional<Product> deleteById(long id);
 
     List<Product> findByType(String type);
+    List<Product> findBySellerId(long id);
 
-//	User findByMail(String mail);
 
 }
 

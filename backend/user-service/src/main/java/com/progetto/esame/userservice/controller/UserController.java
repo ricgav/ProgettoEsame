@@ -39,57 +39,26 @@ public class UserController {
 			return errorResponse();
 		}
 
-		// ----- OLD VERSIONE
-		//List<User> users = new ArrayList<>();
-		//repository.findAll().forEach(users::add);
-		//return users;
 	}
 
 	@PostMapping("/users/create")
 	public ResponseEntity<?> createUser (@RequestBody User user){
 		try {
-			return new ResponseEntity<>(
-					userService.saveNewUser(user),
-					HttpStatus.CREATED);
+			return userService.tryCreate(user);
 		} catch (Exception e) {
 			return errorResponse();
 		}
 	}
 
-	@GetMapping("/login")
+	@GetMapping("/users/login")
 	public ResponseEntity<?>  userLogin (@RequestParam String mail, @RequestParam String password) {
-		System.out.println("Login...");
-		Optional<User> optUser = userService.mailExists(mail);
-		if (optUser.isPresent()) {
-			User user = optUser.get();
-			if (userService.login(user, password)) {
-
-				return new ResponseEntity<>(
-						user,
-						HttpStatus.OK);
-			}
-			else {
-				return errorLoginResponse(mail);
-			}
-		} else {
-			return errorUserNotFound(mail);
-		}
-
-	}
-
-	/*@GetMapping("/login")
-	public ResponseEntity<?> login (@RequestParam String mail){
-		//System.out.println(params);
-		//System.out.println(params.values());
-		if (userService.login(mail)) {
-			return new ResponseEntity<>(
-					"Login successful",
-					HttpStatus.OK);
-		}
-		else {
+		System.out.println("Login new...");
+		try {
+			return userService.tryLogin(mail,password);
+		} catch (Exception e) {
 			return errorResponse();
 		}
-	}*/
+	}
 
 	@GetMapping("/users/{id}")
 	public ResponseEntity<?> getUserById(@PathVariable("id") long id) {
@@ -131,6 +100,23 @@ public class UserController {
 		//return _user;
 	}
 
+	@GetMapping("/checkMailAvailable")
+	public ResponseEntity<?> checkMailAvailable(@RequestParam String mail) {
+		try {
+			Optional<User> optUser = userService.getUserByMail(mail);
+			if (optUser.isPresent()) {
+				return new ResponseEntity<>("Mail già presente a sistema",
+						HttpStatus.FORBIDDEN);
+			} else {
+				return new ResponseEntity<>("Mail disponibile",
+						HttpStatus.OK);
+			}
+		} catch (Exception e) {
+			return errorResponse();
+		}
+
+	}
+
 	@DeleteMapping("/users/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable("id") long id) {
 		System.out.println("Delete User with ID = " + id + "...");
@@ -148,8 +134,7 @@ public class UserController {
 		} catch (Exception e) {
 			return errorResponse();
 		}
-		//repository.deleteById(id);
-		//return new ResponseEntity<>("User has been deleted!", HttpStatus.OK);
+
 	}
 
 	@DeleteMapping("/users/delete")
@@ -169,16 +154,12 @@ public class UserController {
 		return new ResponseEntity<>("Wrong password for user with mail: " + mail, HttpStatus.FORBIDDEN);
 	}
 
-	private ResponseEntity<String> errorUserNotFound(String mail){
-		return new ResponseEntity<>("No user found with mail: " + mail, HttpStatus.NOT_FOUND);
-	}
-
 	private ResponseEntity<String> noUserFoundResponse(Long id){
 		return new ResponseEntity<>("No user found with id: " + id, HttpStatus.NOT_FOUND);
 	}
 
 	private ResponseEntity<String> noUserMailFoundResponse(String mail){
-		return new ResponseEntity<>("No user found with id: " + mail, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>("No user found with mail: " + mail, HttpStatus.NOT_FOUND);
 	}
 }
 

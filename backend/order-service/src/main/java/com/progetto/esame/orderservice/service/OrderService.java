@@ -31,8 +31,16 @@ public class OrderService {
 
 
     @Transactional
+    public List<Order> getOrdersByUserId(long userId) {
+        List<Order> productList = new ArrayList<>();
+        orderRepository.findByUserId(userId).forEach(productList::add);
+        return productList;
+    }
+
+
+    @Transactional
     public Order saveNewOrder(Order order) {
-        return orderRepository.save(new Order(order.getUserId(),order.getProductsId()));
+        return orderRepository.save(new Order(order.getUserId(), order.getProductsId(), order.getDate(), order.getPrice()));
     }
 
     @Transactional

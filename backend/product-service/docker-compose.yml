@@ -34,6 +34,7 @@ services:
   app:
     build: .
     image: appbootrest1
+    platform: linux/amd64
     container_name: appbootrest1
     ports:
       - "8080:8080"
