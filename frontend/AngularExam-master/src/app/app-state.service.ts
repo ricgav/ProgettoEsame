@@ -1,23 +1,29 @@
 import {Injectable} from '@angular/core';
 import {UserInfoI, utenti as infoUtenti} from "./data/utenti";
+import {OrderInfoI, ordini as infoOrdini } from "./data/ordini";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppStateService {
-  private datiUtenti: { [username: string]: UserInfoI };
+  private datiUtenti: { [username: string]: UserInfoI};
+  private datiOrdini: { [ordini: string]: OrderInfoI};
   private _currentUser: string;
   private _currentView: string;
+  private _navigationView: string;
 
   private observers: { [evento: string]: ((e: string) => void)[] }; // array di funzioni di callback
 
   constructor() {
     this.datiUtenti = infoUtenti;
+    this.datiOrdini = infoOrdini;
     this._currentUser = "";
     this._currentView = "profile";
+    this._navigationView = "home";
     this.observers = {}; // inizializzo la prop observers
     this.observers['login'] = [];
     this.observers['view'] = [];
+    this.observers['navView'] = [];
   }
 
   observe(evento: string, callback: (e: string) => void) {
@@ -40,6 +46,13 @@ export class AppStateService {
       return this.datiUtenti[utente];
     return null;
   }
+
+  orderInfo(utente: string): OrderInfoI | null {
+    if (this.datiOrdini.hasOwnProperty(utente))
+      return this.datiOrdini[utente];
+    return null;
+  }
+
 
   exists(utente: string): boolean {
     return this.datiUtenti.hasOwnProperty(utente);
@@ -74,6 +87,18 @@ export class AppStateService {
       this._currentView = view;
       for (let callback of this.observers["view"])
         callback(this._currentView);
+    }
+  }
+
+  get currentNavigationView(): string {
+    return this._navigationView;
+  }
+
+  set currentNavigationView(navView: string) {
+    if (navView === "home" || navView === "maglione") {
+      this._navigationView = navView;
+      for (let callback of this.observers["navView"])
+        callback(this._navigationView);
     }
   }
 }

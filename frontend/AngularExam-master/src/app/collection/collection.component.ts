@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {UserProfileComponent} from "../user-profile/user-profile.component";
+import {AppStateService} from "../app-state.service";
 
 
 @Component({
@@ -9,6 +9,10 @@ import {UserProfileComponent} from "../user-profile/user-profile.component";
 })
 
 export class CollectionComponent {
-  @Input() navbutton!: string;
-  @Output() nav: EventEmitter<string> = new EventEmitter<string>();
+  product: any;
+
+  constructor(private appServ: AppStateService) {
+    this.product = appServ.orderInfo(appServ.currentUser)
+  }
+
 }

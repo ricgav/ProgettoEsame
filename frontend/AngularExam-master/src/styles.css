@@ -168,6 +168,12 @@ body {
   margin: 0;
   padding: 10px;
   align-self: stretch;
+  text-align: left;
+}
+
+.title-order{
+  float: left
+;
 }
 
 .other {

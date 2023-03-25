@@ -12,11 +12,16 @@ export class AppComponent {
   utenti!: string[];
   loggedUser!: string;
   currentView!: string;
+  currentNavigationView!: string;
 
   constructor(private appServ: AppStateService) {
     this.utenti = appServ.utenti;
     this.loggedUser = appServ.currentUser;
     this.currentView = appServ.currentView;
+    this.currentNavigationView = appServ.currentNavigationView;
+    appServ.observe("navView", (navView) =>{
+      this.currentNavigationView = navView;
+    })
     appServ.observe("login", (utente) =>{
       this.loggedUser = utente;
     })
