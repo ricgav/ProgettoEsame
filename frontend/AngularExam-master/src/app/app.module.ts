@@ -9,7 +9,7 @@ import { PresentationComponent } from './presentation/presentation.component';
 import { SecodNavComponent } from './secod-nav/secod-nav.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
-
+import { CollectionComponent } from './collection/collection.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
     SecodNavComponent,
     UserProfileComponent,
     LoginComponent,
+    CollectionComponent
   ],
   imports: [
     BrowserModule,
