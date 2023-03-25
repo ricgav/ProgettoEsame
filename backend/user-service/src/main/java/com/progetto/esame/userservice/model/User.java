@@ -26,19 +26,23 @@ public class User {
 	@Column(name = "address")
 	private String address;
 
+	@Column(name = "image")
+	private String image;
+
 	@Column(name = "isSeller")
 	private boolean isSeller;
 
 	public User(){
 
 	}
-	public User(String mail, String name, String surname, String password, String address, boolean isSeller) {
+	public User(String mail, String name, String surname, String password, String address, boolean isSeller, String image) {
 		this.mail = mail;
 		this.name = name;
 		this.surname = surname;
 		this.password = password;
 		this.address = address;
 		this.isSeller = isSeller;
+		this.image = image;
 	}
 
 	public long getId() {
@@ -47,6 +51,14 @@ public class User {
 
 	public String getMail() {
 		return this.mail;
+	}
+
+	public String getImage() {
+		return this.image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public void setMail(String mail) {

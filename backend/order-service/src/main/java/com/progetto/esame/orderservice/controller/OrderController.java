@@ -34,6 +34,18 @@ private final OrderService orderService;
 		}
 	}
 
+	@GetMapping("/getUserOrders")
+	public ResponseEntity<?> getUserOrders(@RequestParam long userId) {
+		System.out.println("Get all orders of user...");
+		try {
+			return new ResponseEntity<>(
+					orderService.getOrdersByUserId(userId),
+					HttpStatus.OK);
+		} catch (Exception e) {
+			return errorResponse();
+		}
+	}
+
 
 	@PostMapping(value = "/orders/create")
 	public ResponseEntity<?> createOrder (@RequestBody Order order){

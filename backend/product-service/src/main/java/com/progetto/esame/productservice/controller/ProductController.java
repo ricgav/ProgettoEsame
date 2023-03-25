@@ -37,6 +37,30 @@ public class ProductController {
 		}
 	}
 
+	@GetMapping("/productsByType")
+	public ResponseEntity<?> productsByType(@RequestParam String type) {
+		System.out.println("Get all products by type...");
+		try {
+			return new ResponseEntity<>(
+					productService.getProductsByType(type),
+					HttpStatus.OK);
+		} catch (Exception e) {
+			return errorResponse();
+		}
+	}
+
+	@GetMapping("/productsBySeller")
+	public ResponseEntity<?> productsBySeller(@RequestParam long sellerId) {
+		System.out.println("Get all products by seller...");
+		try {
+			return new ResponseEntity<>(
+					productService.getProductsBySellerId(sellerId),
+					HttpStatus.OK);
+		} catch (Exception e) {
+			return errorResponse();
+		}
+	}
+
 	@GetMapping("/products/{id}")
 	public ResponseEntity<?> getProductById(@PathVariable("id") long id) {
 

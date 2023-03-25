@@ -26,6 +26,21 @@ public class ProductService {
     }
 
     @Transactional
+    public List<Product> getProductsByType(String type) {
+        List<Product> productList = new ArrayList<>();
+        productRepository.findByType(type).forEach(productList::add);
+        return productList;
+    }
+
+    @Transactional
+    public List<Product> getProductsBySellerId(long sellerId) {
+        List<Product> productList = new ArrayList<>();
+        productRepository.findBySellerId(sellerId).forEach(productList::add);
+        return productList;
+    }
+
+
+    @Transactional
     public Optional<Product> getProductById(long id) {
         return productRepository.findById(id);
     }
@@ -34,7 +49,7 @@ public class ProductService {
     @Transactional
     public Product saveNewProduct(Product product) {
         return productRepository.save(new Product(product.getName(),product.getDescription(),
-                product.getPrice(),product.getType(),product.getImage()));
+                product.getPrice(),product.getType(),product.getImage(), product.getSellerId(), product.getSize()));
     }
 
     @Transactional
