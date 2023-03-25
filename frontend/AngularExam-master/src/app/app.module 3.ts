@@ -9,7 +9,9 @@ import { PresentationComponent } from './presentation/presentation.component';
 import { SecodNavComponent } from './secod-nav/secod-nav.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
-import { CollectionComponent } from './collection/collection.component';
+import {ReactiveFormsModule} from "@angular/forms";
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,11 +21,11 @@ import { CollectionComponent } from './collection/collection.component';
     SecodNavComponent,
     UserProfileComponent,
     LoginComponent,
-    CollectionComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

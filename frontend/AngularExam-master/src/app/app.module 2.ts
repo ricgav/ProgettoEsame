@@ -8,8 +8,11 @@ import { HeaderComponent } from './header/header.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { SecodNavComponent } from './secod-nav/secod-nav.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { LoginComponent } from './login/login.component';
 import { CollectionComponent } from './collection/collection.component';
+import { CarouselHomeComponent } from './carousel-home/carousel-home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,12 +21,13 @@ import { CollectionComponent } from './collection/collection.component';
     PresentationComponent,
     SecodNavComponent,
     UserProfileComponent,
-    LoginComponent,
-    CollectionComponent
+    CollectionComponent,
+    CarouselHomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
