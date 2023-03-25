@@ -3,7 +3,7 @@
   grid-row-end: footer;
   grid-column-start: left-col;
   grid-column-end: h-center;
-  background-color: rgb(220, 220, 220);
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -12,7 +12,6 @@
 
 p {
   background-color: white;
-  border: 1px solid rgb(40, 40, 40);
   border-radius: 12px;
   padding: 10px 15px;
 }
@@ -27,8 +26,7 @@ p:hover {
 }
 
 p.selected {
-  background-color: pink;
-  border: 1px solid rgb(40, 40, 40);
+  background-color: rgb(215,193,96);
   border-radius: 12px;
   padding: 10px 15px;
 }

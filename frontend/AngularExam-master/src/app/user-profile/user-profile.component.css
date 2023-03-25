@@ -9,3 +9,21 @@
   justify-content: center;
   overflow: scroll;
 }
+
+.center-stage{
+  text-align: center;
+  width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
+
+.center-parameters{
+  width: 400px;
+}
+
+.profile-picture{
+  width: 400px;
+  border-radius: 12px;
+
+}
