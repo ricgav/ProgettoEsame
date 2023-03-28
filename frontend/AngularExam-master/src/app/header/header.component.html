@@ -8,16 +8,14 @@
   <p class="btn-nav">Scarpe</p>
 </div>
 <div class="user-logins">
-  <img src="assets/profile.png" width="44px">
-  <img src="assets/kart.png" width="44px">
+<!--  <img src="assets/profile.png" width="44px">-->
+<!--  <img src="assets/kart.png" width="44px">-->
   <div class="user-logins">
     <ng-container *ngFor="let utente of utenti">
-      <p *ngIf="loggedUser.length === 0 || loggedUser === utente"
-         [class]="{selected: (loggedUser === utente)}"
-         (click)="appServ.login(utente)">
-        {{utente}}
-      </p>
     </ng-container>
+    <p onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+      Login
+    </p>
     <p *ngIf="loggedUser.length > 0"
        (click)="appServ.logout()" class="btn-nav">Log out</p>
   </div>

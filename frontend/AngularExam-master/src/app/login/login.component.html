@@ -1,24 +1,38 @@
-<h2>Login</h2>
-<form>
-  <div class="form-group">
-    <label >Username</label>
-    <input type="text" formControlName="username" class="form-control" [ngClass]="" />
-    <div  class="invalid-feedback">
-      <div >Username is required</div>
+<div id="id01" class="modal">
+
+  <form class="modal-content animate" action="https://www.google.com">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
     </div>
-  </div>
-  <div class="form-group">
-    <label >Password</label>
-    <input type="password" formControlName="password" class="form-control" [ngClass]="" />
-    <div class="invalid-feedback">
-      <div>Password is required</div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
     </div>
-  </div>
-  <div class="form-group">
-    <button [disabled]="" class="btn btn-primary">
-      <span class="spinner-border spinner-border-sm mr-1"></span>
-      Login
-    </button>
-    <a routerLink="/register" class="btn btn-link">Register</a>
-  </div>
-</form>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
