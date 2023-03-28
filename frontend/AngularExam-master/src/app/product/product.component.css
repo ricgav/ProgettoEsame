@@ -1,0 +1,7 @@
+:host {
+  grid-column-start: left-col;
+  grid-column-end: end;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+}

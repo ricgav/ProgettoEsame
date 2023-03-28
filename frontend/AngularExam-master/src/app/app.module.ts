@@ -10,6 +10,7 @@ import { SecodNavComponent } from './secod-nav/secod-nav.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
 import { CollectionComponent } from './collection/collection.component';
+import { ProductComponent } from './product/product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { CollectionComponent } from './collection/collection.component';
     SecodNavComponent,
     UserProfileComponent,
     LoginComponent,
-    CollectionComponent
+    CollectionComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
