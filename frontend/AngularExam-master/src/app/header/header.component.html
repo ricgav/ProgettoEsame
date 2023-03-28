@@ -9,7 +9,11 @@
 </div>
 <div class="user-logins">
 <!--  <img src="assets/profile.png" width="44px">-->
-<!--  <img src="assets/kart.png" width="44px">-->
+  <!--*ngIf="loggedUser.length > 0"-->
+
+  <button (click)="appServ.currentView = 'cart'"
+  [class]="{selected: (currentView === 'cart')}"><img src="assets/kart.png" width="44px"></button>
+
   <div class="user-logins">
     <ng-container *ngFor="let utente of utenti">
     </ng-container>

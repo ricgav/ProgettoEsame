@@ -10,12 +10,20 @@ import {AppStateService} from "../app-state.service";
 export class HeaderComponent {
   utenti!: string[];
   loggedUser!: string;
+  currentView!: string;
 
   constructor(public appServ: AppStateService) {
     this.utenti = appServ.utenti;
     this.loggedUser = appServ.currentUser;
+    this.currentView = appServ.currentView;
+
     this.appServ.observe("login", (utente: string) => {
       this.loggedUser = utente;
+    })
+
+    appServ.observe("view", (view) => {
+      this.currentView = view;
+      console.log(view);
     })
   }
 }
