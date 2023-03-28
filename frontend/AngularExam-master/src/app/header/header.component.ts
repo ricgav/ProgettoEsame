@@ -17,5 +17,6 @@ export class HeaderComponent {
     this.appServ.observe("login", (utente: string) => {
       this.loggedUser = utente;
     })
+
   }
 }

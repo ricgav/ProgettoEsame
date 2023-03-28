@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
   selector: 'app-login',
@@ -13,6 +13,8 @@ import { first } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
   form!: FormGroup;
   submitted = false;
+
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -25,15 +27,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
   // convenience getter for easy access to form fields
   get f() { return this.form.controls; }
 
-  onSubmit() {
-    this.submitted = true;
 
-    // stop here if form is invalid
-    if (this.form.invalid) {
-      return;
-    }
+
+  onSubmit() {
+
   }
 }

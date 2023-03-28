@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {HeaderComponent} from "../header/header.component";
 import {AppStateService} from "../app-state.service";
 
 @Component({
@@ -10,7 +11,7 @@ import {AppStateService} from "../app-state.service";
 export class UserProfileComponent {
   user: any;
 
-  constructor(private appServ: AppStateService) {
+  constructor(public appServ: AppStateService) {
     this.user = appServ.userInfo(appServ.currentUser)
   }
 }
