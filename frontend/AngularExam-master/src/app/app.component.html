@@ -1,8 +1,9 @@
 <app-header></app-header>
 
 <ng-container *ngIf="currentView != 'product'">
-  <app-presentation *ngIf="loggedUser.length === 0"></app-presentation>
+  <app-presentation *ngIf="loggedUser.length === 0 && currentView != 'cart'"></app-presentation>
   <app-login></app-login>
+  <app-cart *ngIf=" loggedUser.length > 0 && currentView === 'cart'"></app-cart>
 </ng-container>
 
 <app-product *ngIf="currentView === 'product'"></app-product>
