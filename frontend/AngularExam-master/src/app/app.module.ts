@@ -9,7 +9,7 @@ import { PresentationComponent } from './presentation/presentation.component';
 import { SecodNavComponent } from './secod-nav/secod-nav.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
-import { CollectionComponent } from './collection/collection.component';
+import { OrderComponent } from './order/order.component';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import {FormsModule} from "@angular/forms";
@@ -22,9 +22,9 @@ import {FormsModule} from "@angular/forms";
     SecodNavComponent,
     UserProfileComponent,
     LoginComponent,
-    CollectionComponent,
+    OrderComponent,
     ProductComponent,
-    CollectionComponent,
+    OrderComponent,
     CartComponent
   ],
     imports: [

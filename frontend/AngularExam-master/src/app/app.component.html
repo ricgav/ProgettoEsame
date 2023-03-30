@@ -3,14 +3,14 @@
 
 <ng-container *ngIf="currentView != 'product'">
   <app-presentation *ngIf="loggedUser.length === 0 && currentView != 'cart'"></app-presentation>
-  <app-cart *ngIf=" loggedUser.length > 0 && currentView === 'cart'"></app-cart>
+  <app-cart *ngIf="currentView === 'cart'"></app-cart>
 </ng-container>
 
 <app-product *ngIf="currentView === 'product'"></app-product>
 
 <ng-container *ngIf="loggedUser.length > 0 && currentView != 'product'">
   <app-secod-nav></app-secod-nav>
-  <app-collection *ngIf="currentView === 'collection'"></app-collection>
+  <app-order *ngIf="currentView === 'order'"></app-order>
   <app-user-profile *ngIf="currentView === 'profile'"></app-user-profile>
 </ng-container>
 

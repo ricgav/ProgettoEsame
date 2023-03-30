@@ -16,7 +16,6 @@
             </select><br><br>
             <button type="button" class="btn-cart" (click)="addProductToCart(product, selectedSize)">ADD TO CART</button>
           </form>
-
       </div>
       </div>
     </div>
@@ -29,14 +28,14 @@
             <span class="product-title">{{product.nomeProdotto}}</span><br><br>
             <span >{{product.descrizioneProdotto}}</span><br><br>
             <span>Price: <strong>{{product.price}}</strong></span><br><br>
-            <form action="#">
+            <form>
               <label>Taglia:  </label>
-              <select name="product-size">
+              <select name="product-size" [(ngModel)]="selectedSize">
                 <option value="S">S</option>
                 <option value="M">M</option>
                 <option value="L">L</option>
               </select><br><br>
-              <input type="submit" value="ADD TO CART" class="btn-cart" />
+              <button type="button" class="btn-cart" (click)="addProductToCart(product, selectedSize)">ADD TO CART</button>
             </form>
           </div>
         </div>
@@ -50,14 +49,14 @@
           <span class="product-title">{{product.nomeProdotto}}</span><br><br>
           <span >{{product.descrizioneProdotto}}</span><br><br>
           <span>Price: <strong>{{product.price}}</strong></span><br><br>
-          <form action="#">
+          <form>
             <label>Taglia:  </label>
-            <select name="product-size">
+            <select name="product-size" [(ngModel)]="selectedSize">
               <option value="S">S</option>
               <option value="M">M</option>
               <option value="L">L</option>
             </select><br><br>
-            <input type="submit" value="ADD TO CART" class="btn-cart" />
+            <button type="button" class="btn-cart" (click)="addProductToCart(product, selectedSize)">ADD TO CART</button>
           </form>
         </div>
       </div>
@@ -71,14 +70,18 @@
           <span class="product-title">{{product.nomeProdotto}}</span><br><br>
           <span >{{product.descrizioneProdotto}}</span><br><br>
           <span>Price: <strong>{{product.price}}</strong></span><br><br>
-          <form action="#">
+          <form>
             <label>Taglia:  </label>
-            <select name="product-size">
-              <option value="S">38</option>
-              <option value="M">41</option>
-              <option value="L">44</option>
+            <select name="product-size" [(ngModel)]="selectedSize">
+              <option value="38">38</option>
+              <option value="39">39</option>
+              <option value="40">40</option>
+              <option value="41">41</option>
+              <option value="42">42</option>
+              <option value="43">43</option>
+              <option value="44">44</option>
             </select><br><br>
-            <input type="submit" value="ADD TO CART"  class="btn-cart" />
+            <button type="button" class="btn-cart" (click)="addProductToCart(product, selectedSize)">ADD TO CART</button>
           </form>
         </div>
       </div>

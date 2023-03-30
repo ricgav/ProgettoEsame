@@ -3,12 +3,15 @@
     <h3 class="collection-title">Carrello</h3>
     <div class="center-parameters">
       <ul>
-        <div class="single-order-box">
-          <div class="box-value">
-
+        <div class="single-order-box" *ngFor="let item of cartBox">
+          <div class="box-value" >
+            <span>{{item.nomeProdotto}}</span><br>
+            <span>{{item.price}}</span><br>
           </div>
+          <button class="position-remove-btn" (click)="removeItem(item)">-</button>
         </div>
       </ul>
     </div>
+    <button class="btn">INVIA</button>
   </div>
 </div>

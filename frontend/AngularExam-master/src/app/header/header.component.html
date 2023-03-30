@@ -7,6 +7,7 @@
   <p class="btn-nav" (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'pantalone')">Pantaloni</p>
   <p class="btn-nav" (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'scarpa')">Scarpe</p>
 </div>
+
 <div class="user-logins">
   <div *ngIf="loggedUser.length>0" (click)="appServ.currentView = 'cart'"
   [class]="{selected: (currentView === 'cart')}" >

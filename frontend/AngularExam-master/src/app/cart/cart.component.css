@@ -8,3 +8,43 @@
   flex-direction: column;
   align-items: center;
 }
+
+.position-remove-btn{
+  float: right;
+  margin-right: -107px;
+  margin-top: -28px;
+  background-color: darkred;
+  color: white;
+  border-radius: 100px;
+}
+
+.single-order-box{
+  border-radius: 12px;
+  background-color: #eeeeee;
+  height: 110px;
+  width: 800px;
+  box-shadow: 5px 5px 5px #dedede;
+  margin: 30px;
+}
+
+.box-value{
+  padding: 10px;
+  margin: 10px;
+}
+
+.btn{
+  background-color: #94d37a;
+  color: #0f520f;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  border-radius: 12px;
+  font-weight: bold;
+  float: right;
+}
+
+.center-parameters {
+  width: 100% !important;
+}

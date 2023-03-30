@@ -4,12 +4,12 @@ import {OrderInfoI} from "../data/ordini";
 
 
 @Component({
-  selector: 'app-collection',
-  templateUrl: './collection.component.html',
-  styleUrls: ['./collection.component.css']
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.css']
 })
 
-export class CollectionComponent {
+export class OrderComponent {
   orders: any;
 //order: OrderInfoI;
   constructor(private appServ: AppStateService) {

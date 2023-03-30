@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {UserInfoI, utenti as infoUtenti} from "./data/utenti";
 import {OrderInfoI, ordini as infoOrdini } from "./data/ordini";
-import {ProductInfoI, prodotti as InfoProdotti} from "./data/prodotti";
+import {ProductInfoI, products as InfoProdotti} from "./data/prodotti";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import {ProductInfoI, prodotti as InfoProdotti} from "./data/prodotti";
 export class AppStateService {
   private datiUtenti: { [username: string]: UserInfoI};
   private datiOrdini: { [ordini: string]: OrderInfoI[]};
-  private datiProdotti: { [prodotti: string]: ProductInfoI[]};
+  private datiProdotti: ProductInfoI[]=[];
   private _currentUser: string;
   private _currentView: string;
   private _navigationView: string;
@@ -57,9 +57,7 @@ export class AppStateService {
   }
 
   productInfo(product: string): ProductInfoI[] | null {
-    if (this.datiProdotti.hasOwnProperty(product))
-      return this.datiProdotti[product];
-    return null;
+    return this.datiProdotti;
   }
 
 
@@ -75,6 +73,7 @@ export class AppStateService {
     if (this._currentUser.length > 0) return;
     if (this.exists(utente)) {
       this._currentUser = utente;
+      localStorage.setItem('loggedUser', this._currentUser);
       for (let callback of this.observers["login"])
         callback(this._currentUser);
     }
@@ -83,6 +82,7 @@ export class AppStateService {
   logout() {
     if (this._currentUser.length === 0) return;
     this._currentUser = "";
+    localStorage.clear();
     for (let callback of this.observers["login"])
       callback(this._currentUser);
   }
@@ -92,7 +92,7 @@ export class AppStateService {
   }
 
   set currentView(view: string) {
-    if (view === "profile" || view === "collection"|| view === "login" || view === "cart" ||view === "product") {
+    if (view === "profile" || view === "order"|| view === "login" || view === "cart" ||view === "product") {
       this._currentView = view;
       for (let callback of this.observers["view"])
         callback(this._currentView);
