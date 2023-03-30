@@ -1,39 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
+import {Component} from '@angular/core';
+import {AppStateService} from "../app-state.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+export class LoginComponent {
 
-export class LoginComponent implements OnInit {
-  form!: FormGroup;
-  submitted = false;
+  username: string = "";
+  password: string = "";
+  show: boolean = false;
 
-  constructor(
-    private formBuilder: FormBuilder,
-  ) { }
-
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.form.controls; }
-
-  onSubmit() {
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.form.invalid) {
-      return;
+  submit() {
+    // console.log("username: " + this.username)
+    function login(username: string, password: string) {
+      if (username === password) {
+        localStorage.setItem('loggedUser', username);
+        let window = document.getElementById('id01');
+        if (window != null) [
+          window.style.display = 'none',
+        ]
+      }else {
+        return
+      }
     }
+    login(this.username, this.password);
+    this.clear();
+  }
+  clear(){
+    this.username ="";
+    this.password = "";
   }
 }

@@ -8,6 +8,15 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
+input[type=text], input[type=username] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
 /* Set a style for all buttons */
 button {
   background-color: rgb(215,193,96);
@@ -44,10 +53,6 @@ button:hover {
   border-radius: 12px;
 }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
 
 /* The Modal (background) */
 .modal {
@@ -103,15 +108,4 @@ span.psw {
 @keyframes animatezoom {
   from {transform: scale(0)}
   to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-    display: block;
-    float: none;
-  }
-  .cancelbtn {
-    width: 100%;
-  }
 }

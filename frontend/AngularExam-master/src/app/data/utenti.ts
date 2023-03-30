@@ -4,6 +4,8 @@ export interface UserInfoI {
   image: string;
   email: string;
   address: string;
+
+  isSeller: boolean;
 }
 
 const user: UserInfoI = {
@@ -12,6 +14,7 @@ const user: UserInfoI = {
   image: "alice.jpg",
   email: "test@test.com",
   address: "Piazza la bomba 4",
+  isSeller: true
 }
 
 export const utenti: { [username: string]: UserInfoI} = {

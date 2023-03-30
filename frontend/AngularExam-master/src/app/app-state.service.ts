@@ -92,7 +92,7 @@ export class AppStateService {
   }
 
   set currentView(view: string) {
-    if (view === "profile" || view === "order"|| view === "login" || view === "cart" ||view === "product") {
+    if (view === "profile" || view === "order"|| view === "login" || view === "cart" ||view === "product" || view === 'sell') {
       this._currentView = view;
       for (let callback of this.observers["view"])
         callback(this._currentView);

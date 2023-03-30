@@ -1,0 +1,36 @@
+<div class="user-card">
+  <h3 class="collection-title">Vendi</h3>
+  <div class="profile-grid">
+    <div class="single-order-box">
+      <form class="form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+        <p class="p-form">
+          <label>Nome Prodotto: </label>
+          <input class="input-form" type="text" name="nomeProdotto" ngModel>
+        </p>
+        <p class="p-form">
+          <label>Descrizione Prodotto: </label>
+          <input class="input-form"type="text" name="descrizioneProdotto" ngModel>
+        </p>
+        <p class="p-form">
+          <label>Prezzo: </label>
+          <input class="input-form" type="text" name="price" ngModel>
+        </p>
+        <p class="p-form">
+          <label>Immagine: </label>
+          <input class="input-form" type="text" name="image" ngModel>
+        </p>
+        <p class="p-form">
+          <label>Tipo: </label>
+          <select class="input-form" name="type" ngModel>
+            <option [ngValue]="c.id" *ngFor="let c of typeList">
+              {{c.name}}
+            </option>
+          </select>
+        </p>
+      </form>
+      <p>
+        <button class="btn-form" type="submit">Submit</button>
+      </p>
+    </div>
+  </div>
+</div>

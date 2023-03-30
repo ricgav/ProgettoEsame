@@ -13,6 +13,7 @@ import { OrderComponent } from './order/order.component';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
 import {FormsModule} from "@angular/forms";
+import { SellerOptionComponent } from './seller-option/seller-option.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import {FormsModule} from "@angular/forms";
     OrderComponent,
     ProductComponent,
     OrderComponent,
-    CartComponent
+    CartComponent,
+    SellerOptionComponent
   ],
     imports: [
         BrowserModule,
