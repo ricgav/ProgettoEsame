@@ -11,10 +11,10 @@
 
 .single-order-box{
   border-radius: 12px;
-  background-color: #eeeeee;
+  background-color: white;
   height: 110px;
   width: 800px;
-  box-shadow: 5px 5px 5px #dedede;
+  box-shadow: 5px 10px 5px #dedede;
   margin: 30px;
 }
 

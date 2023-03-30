@@ -32,11 +32,13 @@
 }
 
 .btn-cart{
-  background-color: rgb(215,193,96);
+  background-color: transparent;
+  border-color: rgb(215,193,96);
+  border-width: 2px;
   color: black;
   border-radius: 12px;
-  border: none;
   width: 150px;
   height: 50px;
   font-weight: bold;
+
 }

@@ -1,10 +1,9 @@
-<p (click)="appServ.currentView = 'profile'"
-   [class]="{selected: (currentView === 'profile')}">
-  Profilo</p>
-<p (click)="appServ.currentView = 'order'"
-   [class]="{selected: (currentView === 'order')}">
-  Ordini</p>
-<p (click)="appServ.currentView = 'cart'"
-   [class]="{selected: (currentView === 'cart')}">
-  Carrello</p>
-
+<button (click)="appServ.currentView = 'profile'"
+        [class]="{selected: (currentView === 'profile')}">
+  <p>Profilo</p></button>
+<button (click)="appServ.currentView = 'order'"
+        [class]="{selected: (currentView === 'order')}">
+  <p>Ordini</p></button>
+<button (click)="appServ.currentView = 'cart'"
+        [class]="{selected: (currentView === 'cart')}">
+  <p>Carrello</p></button>

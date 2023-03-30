@@ -17,19 +17,27 @@ export class ProductComponent {
   }
 
 
-  addProductToCart(product: string, selectedSize: string) {
-    let ls= localStorage.getItem("loggedUser");
-    if(!ls){ window.alert("Effettua prima il Login"); return}
-    if(selectedSize === undefined){ window.alert("Scegliere taglia"); return}
+  addProductToCart(product: any, selectedSize: string) {
+    let ls = localStorage.getItem("loggedUser");
+    if (!ls) {
+      window.alert("Effettua prima il Login");
+      return
+    }
+    if (selectedSize === undefined) {
+      window.alert("Scegliere taglia");
+      return
+    }
     console.log(selectedSize);
-    let cart= localStorage.getItem("cartStorage");
-    if (cart === null ){
-      localStorage.setItem('cartStorage',JSON.stringify([product]));
+    let cart = localStorage.getItem("cartStorage");
+    if (cart === null) {
+      product.size = selectedSize;
+      localStorage.setItem('cartStorage', JSON.stringify([product]));
     } else {
       let cartNew = JSON.parse(cart);
       cartNew.push(product);
+      product.size = selectedSize;
       console.warn(cart);
-      localStorage.setItem('cartStorage',JSON.stringify(cartNew));
+      localStorage.setItem('cartStorage', JSON.stringify(cartNew));
     }
   }
 }

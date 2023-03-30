@@ -8,12 +8,17 @@
   flex-direction: column;
   gap: 10px;
   padding: 10px 20px;
+  margin-left: 85px;
 }
 
-p {
-  background-color: white;
+button {
+  background-color: transparent;
+  border-color: rgb(215,193,96);
+  border-width: 2px;
   border-radius: 12px;
   padding: 10px 15px;
+  font-size: 14pt;
+  font-family: Lato, sans-serif;
 }
 
 a {
@@ -21,11 +26,11 @@ a {
   color: inherit;
 }
 
-p:hover {
+button:hover {
   background-color: rgb(220, 220, 220);
 }
 
-p.selected {
+button.selected {
   background-color: rgb(215,193,96);
   border-radius: 12px;
   padding: 10px 15px;

@@ -11,11 +11,13 @@ export class HeaderComponent {
   utenti!: string[];
   loggedUser!: string;
   currentView!: string;
+  currentNavigationView!: string;
 
   constructor(public appServ: AppStateService) {
     this.utenti = appServ.utenti;
     this.loggedUser = appServ.currentUser;
     this.currentView = appServ.currentView;
+    this.currentNavigationView = appServ.currentNavigationView;
 
     this.appServ.observe("login", (utente: string) => {
       this.loggedUser = utente;
@@ -24,6 +26,11 @@ export class HeaderComponent {
     appServ.observe("view", (view) => {
       this.currentView = view;
       console.log(view);
+    })
+
+    appServ.observe("navView", (navView) => {
+      this.currentView = navView ;
+      console.log(navView);
     })
   }
 }

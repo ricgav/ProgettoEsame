@@ -5,13 +5,17 @@
       <ul>
         <div class="single-order-box" *ngFor="let item of cartBox">
           <div class="box-value" >
-            <span>{{item.nomeProdotto}}</span><br>
-            <span>{{item.price}}</span><br>
+            <span>Prodotto: {{item.nomeProdotto}}</span><br>
+            <span>Taglia: {{item.size}}</span><br>
+            <span>Prezzo: <strong>{{item.price}}</strong></span><br>
           </div>
           <button class="position-remove-btn" (click)="removeItem(item)">-</button>
         </div>
       </ul>
     </div>
-    <button class="btn">INVIA</button>
+    <div>
+      <span id="totalAmount"></span>
+    </div>
+    <button class="btn-send">INVIA</button>
   </div>
 </div>

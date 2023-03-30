@@ -13,13 +13,20 @@ export class CartComponent implements OnInit{
   }
 
   getProductInCart() {
-    var ls= localStorage.getItem("loggedUser");
+    let ls= localStorage.getItem("loggedUser");
     if(!ls){window.alert("Effettua prima il Login"); return}
-
-    var cart= localStorage.getItem("cartStorage");
-    var cartDeserialized = JSON.parse(cart || '{}');
+    let cart= localStorage.getItem("cartStorage");
+    let cartDeserialized = JSON.parse(cart || '{}');
     console.warn(cartDeserialized);
     this.cartBox = cartDeserialized;
+    let totalAmount = 0;
+    for(let i = 0; i< cartDeserialized.length; i++){
+      totalAmount = totalAmount + parseFloat(cartDeserialized[i].price);
+    }
+    let text = document.getElementById("totalAmount");
+    if (text != null)[
+      text.innerHTML= "Riepilogo ordine totale : € "+ totalAmount,
+    ]
   }
 
   ngOnInit() {
@@ -31,5 +38,14 @@ export class CartComponent implements OnInit{
       const filtered = items.filter((itemI: { id: any; }) => itemI.id !== item.id);
       localStorage.setItem('cartStorage', JSON.stringify(filtered));
       this.cartBox = JSON.parse(localStorage.getItem('cartStorage') || '{}');
+      var cartDeserialized = this.cartBox;
+      let totalAmount = 0;
+      for(let i = 0; i< cartDeserialized.length; i++){
+        totalAmount = totalAmount + parseFloat(cartDeserialized[i].price);
+      }
+      let text = document.getElementById("totalAmount");
+      if (text != null)[
+        text.innerHTML= "Riepilogo ordine totale : € "+ totalAmount,
+    ]
   }
 }

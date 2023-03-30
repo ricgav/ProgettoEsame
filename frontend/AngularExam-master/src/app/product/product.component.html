@@ -6,9 +6,9 @@
         <div class="product-description">
           <span class="product-title">{{product.nomeProdotto}}</span><br><br>
           <span >{{product.descrizioneProdotto}}</span><br><br>
-          <span>Price: <strong>{{product.price}}</strong></span><br><br>
+          <span>Price: <strong>€ {{product.price}}</strong></span><br><br>
           <form>
-            <label>Taglia:  </label>
+            <label>Taglia: </label>
             <select name="product-size" [(ngModel)]="selectedSize">
               <option value="S">S</option>
               <option value="M">M</option>
@@ -27,9 +27,9 @@
           <div class="product-description">
             <span class="product-title">{{product.nomeProdotto}}</span><br><br>
             <span >{{product.descrizioneProdotto}}</span><br><br>
-            <span>Price: <strong>{{product.price}}</strong></span><br><br>
+            <span>Price: <strong>€ {{product.price}}</strong></span><br><br>
             <form>
-              <label>Taglia:  </label>
+              <label>Taglia: </label>
               <select name="product-size" [(ngModel)]="selectedSize">
                 <option value="S">S</option>
                 <option value="M">M</option>
@@ -48,9 +48,9 @@
         <div class="product-description">
           <span class="product-title">{{product.nomeProdotto}}</span><br><br>
           <span >{{product.descrizioneProdotto}}</span><br><br>
-          <span>Price: <strong>{{product.price}}</strong></span><br><br>
+          <span>Price: <strong>€ {{product.price}}</strong></span><br><br>
           <form>
-            <label>Taglia:  </label>
+            <label>Taglia: </label>
             <select name="product-size" [(ngModel)]="selectedSize">
               <option value="S">S</option>
               <option value="M">M</option>
@@ -69,9 +69,9 @@
         <div class="product-description">
           <span class="product-title">{{product.nomeProdotto}}</span><br><br>
           <span >{{product.descrizioneProdotto}}</span><br><br>
-          <span>Price: <strong>{{product.price}}</strong></span><br><br>
+          <span>Price: <strong>€ {{product.price}}</strong></span><br><br>
           <form>
-            <label>Taglia:  </label>
+            <label>Taglia: </label>
             <select name="product-size" [(ngModel)]="selectedSize">
               <option value="38">38</option>
               <option value="39">39</option>
@@ -88,73 +88,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-<!--  <div *ngIf="appServ.currentNavigationView === 'tshirt'" class="product-detail">-->
-<!--    <img class="product-picture" src="assets/tshirt.png">-->
-<!--    <div class="product-description">-->
-<!--      <span class="product-title">-->
-<!--        Titolo Prodotto-->
-<!--      </span><br><br>-->
-<!--      <span >-->
-<!--        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum-->
-<!--      </span><br><br>-->
-<!--      <span>Price: <strong>€199,99</strong></span><br><br>-->
-<!--      <form action="#">-->
-<!--        <label for="size">Taglia:</label>-->
-<!--        <select name="product-size">-->
-<!--          <option value="S">S</option>-->
-<!--          <option value="M">M</option>-->
-<!--          <option value="L">L</option>-->
-<!--        </select><br><br>-->
-<!--        <input type="submit" value="ADD TO CART" class="btn-cart" />-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div *ngIf="appServ.currentNavigationView === 'pantalone'" class="product-detail">-->
-<!--    <img class="product-picture" src="assets/pants.jpeg">-->
-<!--    <div class="product-description">-->
-<!--      <span class="product-title">-->
-<!--        Titolo Prodotto-->
-<!--      </span><br><br>-->
-<!--      <span >-->
-<!--        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum-->
-<!--      </span><br><br>-->
-<!--      <span>Price: <strong>€17,99</strong></span><br><br>-->
-<!--      <form action="#">-->
-<!--        <label for="size">Taglia:</label>-->
-<!--        <select name="product-size">-->
-<!--          <option value="S">S</option>-->
-<!--          <option value="M">M</option>-->
-<!--          <option value="L">L</option>-->
-<!--        </select><br><br>-->
-<!--        <input type="submit" value="ADD TO CART" class="btn-cart" />-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <div *ngIf="appServ.currentNavigationView === 'scarpa'" class="product-detail">-->
-<!--    <img class="product-picture" src="assets/scarpe.jpg">-->
-<!--    <div class="product-description">-->
-<!--      <span class="product-title">-->
-<!--        Titolo Prodotto-->
-<!--      </span><br><br>-->
-<!--      <span >-->
-<!--        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum-->
-<!--      </span><br><br>-->
-<!--      <span>Price: <strong>€34,99</strong></span><br><br>-->
-<!--      <form action="#">-->
-<!--        <label for="size">Taglia:</label>-->
-<!--        <select name="product-size">-->
-<!--          <option value="38">38</option>-->
-<!--          <option value="41">41</option>-->
-<!--          <option value="44">44</option>-->
-<!--        </select><br><br>-->
-<!--        <input type="submit" value="ADD TO CART" class="btn-cart" />-->
-<!--      </form>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
