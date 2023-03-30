@@ -5,6 +5,9 @@ export interface OrderInfoI {
   price: string;
 }
 
+
+let orders: OrderInfoI[] = [];
+
 const order: OrderInfoI = {
   orderID : "234354",
   nomeProdotto: "Maglione bello Primark",
@@ -19,11 +22,13 @@ const order1: OrderInfoI = {
   price: "€ 19,99"
 }
 
+orders.push(order);
+orders.push(order1);
 
-export const ordini: { [username: string]: OrderInfoI} = {
-  Alice: order,
-
+export const ordini: { [username: string]: OrderInfoI[]} = {
+  User: orders,
   //bisogna modifcare backend in modo che faccia filtro
   // degli ordini di utente e componga un solo json con tutti gli oridni
 };
+
 

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AppStateService} from "../app-state.service";
+import {OrderInfoI} from "../data/ordini";
 
 
 @Component({
@@ -9,10 +10,11 @@ import {AppStateService} from "../app-state.service";
 })
 
 export class CollectionComponent {
-  order: any;
-
+  orders: any;
+//order: OrderInfoI;
   constructor(private appServ: AppStateService) {
-    this.order = appServ.orderInfo(appServ.currentUser)
+    this.orders = appServ.orderInfo(appServ.currentUser);
+
   }
 
 }

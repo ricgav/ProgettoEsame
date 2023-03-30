@@ -6,7 +6,7 @@ export interface UserInfoI {
   address: string;
 }
 
-const alice: UserInfoI = {
+const user: UserInfoI = {
   nome: "Alice",
   cognome: "Corvetto",
   image: "alice.jpg",
@@ -15,5 +15,5 @@ const alice: UserInfoI = {
 }
 
 export const utenti: { [username: string]: UserInfoI} = {
-  Alice: alice,
+  User: user,
 };

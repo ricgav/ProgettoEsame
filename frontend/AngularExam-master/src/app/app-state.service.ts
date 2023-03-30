@@ -8,8 +8,8 @@ import {ProductInfoI, prodotti as InfoProdotti} from "./data/prodotti";
 })
 export class AppStateService {
   private datiUtenti: { [username: string]: UserInfoI};
-  private datiOrdini: { [ordini: string]: OrderInfoI};
-  private datiProdotti: { [prodotti: string]: ProductInfoI};
+  private datiOrdini: { [ordini: string]: OrderInfoI[]};
+  private datiProdotti: { [prodotti: string]: ProductInfoI[]};
   private _currentUser: string;
   private _currentView: string;
   private _navigationView: string;
@@ -50,13 +50,13 @@ export class AppStateService {
     return null;
   }
 
-  orderInfo(utente: string): OrderInfoI | null {
+  orderInfo(utente: string): OrderInfoI[] | null {
     if (this.datiOrdini.hasOwnProperty(utente))
       return this.datiOrdini[utente];
     return null;
   }
 
-  productInfo(product: string): ProductInfoI | null {
+  productInfo(product: string): ProductInfoI[] | null {
     if (this.datiProdotti.hasOwnProperty(product))
       return this.datiProdotti[product];
     return null;

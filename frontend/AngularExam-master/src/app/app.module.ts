@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { CollectionComponent } from './collection/collection.component';
 import { ProductComponent } from './product/product.component';
 import { CartComponent } from './cart/cart.component';
+import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,10 +27,11 @@ import { CartComponent } from './cart/cart.component';
     CollectionComponent,
     CartComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

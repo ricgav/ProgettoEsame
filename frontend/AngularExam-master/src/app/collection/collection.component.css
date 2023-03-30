@@ -13,8 +13,9 @@
   border-radius: 12px;
   background-color: #eeeeee;
   height: 110px;
-  width: 350px;
+  width: 800px;
   box-shadow: 5px 5px 5px #dedede;
+  margin: 30px;
 }
 
 .box-value{
