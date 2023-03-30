@@ -11,13 +11,14 @@ input[type=text], input[type=password] {
 /* Set a style for all buttons */
 button {
   background-color: rgb(215,193,96);
-  color: white;
+  color: black;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
   border-radius: 12px;
+  font-weight: bold;
 }
 
 button:hover {

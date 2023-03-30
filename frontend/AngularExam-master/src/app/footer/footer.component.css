@@ -3,7 +3,16 @@
   grid-row-end: end;
   grid-column-start: left-col;
   grid-column-end: end;
-  background-color: rgb(220, 220, 220);
+  background-color: black;
   padding: 10px;
   text-align: right;
+}
+
+.footer-text{
+  color: white;
+  font-size: 15px;
+}
+
+.footer-text-yellow{
+  color: rgb(215,193,96);
 }

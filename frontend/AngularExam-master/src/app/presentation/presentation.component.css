@@ -21,6 +21,7 @@
   width: 100%;
   align-content: center;
   border-radius: 12px;
+  box-shadow: 5px 5px 5px #dedede;
 }
 
 .align{

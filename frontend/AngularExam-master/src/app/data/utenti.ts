@@ -9,7 +9,7 @@ export interface UserInfoI {
 const alice: UserInfoI = {
   nome: "Alice",
   cognome: "Corvetto",
-  image: "alice.jpeg",
+  image: "alice.jpg",
   email: "test@test.com",
   address: "Piazza la bomba 4",
 }

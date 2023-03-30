@@ -1,0 +1,10 @@
+:host {
+  grid-row-start: v-center-top;
+  grid-row-end: v-center-bot;
+  grid-column-start: h-center;
+  grid-column-end: end;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

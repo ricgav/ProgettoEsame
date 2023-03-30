@@ -9,10 +9,10 @@ import {AppStateService} from "../app-state.service";
 })
 
 export class CollectionComponent {
-  product: any;
+  order: any;
 
   constructor(private appServ: AppStateService) {
-    this.product = appServ.orderInfo(appServ.currentUser)
+    this.order = appServ.orderInfo(appServ.currentUser)
   }
 
 }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {UserInfoI, utenti as infoUtenti} from "./data/utenti";
 import {OrderInfoI, ordini as infoOrdini } from "./data/ordini";
+import {ProductInfoI, prodotti as InfoProdotti} from "./data/prodotti";
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import {OrderInfoI, ordini as infoOrdini } from "./data/ordini";
 export class AppStateService {
   private datiUtenti: { [username: string]: UserInfoI};
   private datiOrdini: { [ordini: string]: OrderInfoI};
+  private datiProdotti: { [prodotti: string]: ProductInfoI};
   private _currentUser: string;
   private _currentView: string;
   private _navigationView: string;
@@ -17,6 +19,7 @@ export class AppStateService {
   constructor() {
     this.datiUtenti = infoUtenti;
     this.datiOrdini = infoOrdini;
+    this.datiProdotti = InfoProdotti;
     this._currentUser = "";
     this._currentView = "profile";
     this._navigationView = "home";
@@ -50,6 +53,12 @@ export class AppStateService {
   orderInfo(utente: string): OrderInfoI | null {
     if (this.datiOrdini.hasOwnProperty(utente))
       return this.datiOrdini[utente];
+    return null;
+  }
+
+  productInfo(product: string): ProductInfoI | null {
+    if (this.datiProdotti.hasOwnProperty(product))
+      return this.datiProdotti[product];
     return null;
   }
 
@@ -95,7 +104,7 @@ export class AppStateService {
   }
 
   set currentNavigationView(navView: string) {
-    if (navView === "home" || navView === "maglione") {
+    if (navView === "maglione" || navView === "pantalone" || navView === "tshirt" || navView === "scarpa") {
       this._navigationView = navView;
       for (let callback of this.observers["navView"])
         callback(this._navigationView);

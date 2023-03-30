@@ -2,15 +2,12 @@
   <img src="./assets/genderlessIcon.png" width="45" height="60" alt="">
 </a>
 <div class="user-logins">
-  <p class="btn-nav" (click)="appServ.currentView = 'product'">Maglioni</p>
-  <p class="btn-nav" (click)="appServ.currentView = 'product'">T-Shirt</p>
-  <p class="btn-nav" (click)="appServ.currentView = 'product'">Pantaloni</p>
-  <p class="btn-nav" (click)="appServ.currentView = 'product'">Scarpe</p>
+  <p class="btn-nav" (click)="(appServ.currentView = 'product' ) &&( appServ.currentNavigationView = 'maglione')">Maglioni</p>
+  <p class="btn-nav" (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'tshirt')">T-Shirt</p>
+  <p class="btn-nav" (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'pantalone')">Pantaloni</p>
+  <p class="btn-nav" (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'scarpa')">Scarpe</p>
 </div>
 <div class="user-logins">
-<!--  <img src="assets/profile.png" width="44px">-->
-  <!--*ngIf="loggedUser.length > 0"-->
-
   <div *ngIf="loggedUser.length>0" (click)="appServ.currentView = 'cart'"
   [class]="{selected: (currentView === 'cart')}" >
     <img src="assets/kart.png" width="44px">
@@ -19,13 +16,13 @@
   <div class="user-logins">
     <ng-container *ngFor="let utente of utenti">
       <p *ngIf="loggedUser.length === 0 || loggedUser === utente"
-
          [class]="{selected: (loggedUser === utente)}"
          (click)="appServ.login(utente)">
         {{utente}}
       </p>
     </ng-container>
     <p *ngIf="loggedUser.length <= 0"
+       (click)="appServ.currentView = 'login'"
        onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
       Login
     </p>

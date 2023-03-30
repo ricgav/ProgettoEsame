@@ -1,11 +1,31 @@
-:host, .collectible {
+:host {
   grid-row-start: v-center-top;
-  grid-row-end: footer;
+  grid-row-end: v-center-bot;
   grid-column-start: h-center;
   grid-column-end: end;
-  background-color: white;
-  padding: 20px;
+  padding: 10px;
   display: flex;
-  justify-content: center;
-  overflow: scroll;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+}
+
+.grid-profile-img{
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.grid-profile-info{
+  grid-area: 1 / 2 / 2 / 3;
+  margin: 40px;
 }

@@ -7,8 +7,9 @@ import {AppStateService} from "../app-state.service";
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
-  constructor(private appServ: AppStateService) {
+  product: any;
 
+  constructor(public appServ: AppStateService) {
   }
 
 }

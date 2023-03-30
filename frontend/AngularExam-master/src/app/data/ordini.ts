@@ -1,5 +1,5 @@
 export interface OrderInfoI {
-  orderID: String;
+  orderID: string;
   nomeProdotto: string;
   size: string;
   price: string;

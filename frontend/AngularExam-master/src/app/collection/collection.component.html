@@ -1,11 +1,17 @@
 <div class="user-card">
   <div>
-    <h3 class="collection-title">Ordini :</h3>
+    <h3 class="collection-title">Ordini</h3>
     <div class="center-parameters">
-      <h3> Order number {{product.orderID}}</h3>
-      <h3> Product : {{product.nomeProdotto}}</h3>
-      <h3> Taglia : {{product.size}}</h3>
-      <h3> Price : {{product.price}}</h3>
+      <ul>
+        <div class="single-order-box">
+          <div class="box-value">
+            <span> Numero d'ordine : {{order.orderID}}</span><br>
+            <span> Prodotti : {{order.nomeProdotto}}</span><br>
+            <span> Taglia : {{order.size}}</span><br>
+            <span> Prezzo : {{order.price}}</span><br>
+          </div>
+        </div>
+      </ul>
     </div>
   </div>
 </div>
