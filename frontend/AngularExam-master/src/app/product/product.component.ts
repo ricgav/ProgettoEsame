@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AppStateService} from "../app-state.service";
 import {AppComponent} from "../app.component";
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-product',
@@ -12,7 +13,7 @@ export class ProductComponent {
   cart: string [] = [];
   selectedSize: any;
 
-  constructor(public appServ: AppStateService) {
+  constructor(public appServ: AppStateService, private toast: NgToastService) {
     this.products = appServ.productInfo(appServ.currentUser);
   }
 
@@ -20,11 +21,11 @@ export class ProductComponent {
   addProductToCart(product: any, selectedSize: string) {
     let ls = localStorage.getItem("loggedUser");
     if (!ls) {
-      window.alert("Effettua prima il Login");
+      this.toast.warning({detail:'Warning',summary:"Effettua prima il login", duration: 3000});
       return
     }
     if (selectedSize === undefined) {
-      window.alert("Scegliere taglia");
+      this.toast.warning({detail:'Warning',summary:"Seleziona prima una taglia", duration: 3000});
       return
     }
     console.log(selectedSize);
@@ -32,12 +33,14 @@ export class ProductComponent {
     if (cart === null) {
       product.size = selectedSize;
       localStorage.setItem('cartStorage', JSON.stringify([product]));
+      this.toast.success({detail:'Success',summary:"aggiunto l'articolo al carrello", duration: 3000});
     } else {
       let cartNew = JSON.parse(cart);
       cartNew.push(product);
       product.size = selectedSize;
       console.warn(cart);
       localStorage.setItem('cartStorage', JSON.stringify(cartNew));
+      this.toast.success({detail:'Success',summary:"aggiunto l'articolo al carrello", duration: 3000});
     }
   }
 }

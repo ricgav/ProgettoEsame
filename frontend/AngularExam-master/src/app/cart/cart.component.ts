@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AppStateService} from "../app-state.service";
+import {NgToastService} from "ng-angular-popup";
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +10,7 @@ import {AppStateService} from "../app-state.service";
 export class CartComponent implements OnInit{
   cartBox: any;
 
-  constructor(private appServ: AppStateService) {
+  constructor(private appServ: AppStateService, private toast: NgToastService) {
   }
 
   getProductInCart() {
@@ -37,6 +38,7 @@ export class CartComponent implements OnInit{
       const items = JSON.parse(localStorage.getItem('cartStorage') || '{}');
       const filtered = items.filter((itemI: { id: any; }) => itemI.id !== item.id);
       localStorage.setItem('cartStorage', JSON.stringify(filtered));
+      this.toast.success({detail:'Success',summary:"rimosso l'articolo dal carrello", duration: 3000});
       this.cartBox = JSON.parse(localStorage.getItem('cartStorage') || '{}');
       var cartDeserialized = this.cartBox;
       let totalAmount = 0;

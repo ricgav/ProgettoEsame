@@ -8,7 +8,7 @@
       <input placeholder="Enter your name" value="" name="username" type="username" [(ngModel)] ="username">
       <label><b>Password</b></label>
       <input placeholder="Enter your password" value="" name="password" type="password" [(ngModel)]= "password">
-      <button (click)="submit()">Login</button>
+      <button (click)="submit(username,password)">Login</button>
       <span *ngIf="show">Login success</span>
     </div>
   </form>
