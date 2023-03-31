@@ -12,8 +12,8 @@ let products: ProductInfoI[] = [];
 
 const product: ProductInfoI = {
   id : "0",
-  nomeProdotto: "Maglione bello Primark",
-  descrizioneProdotto: "Oversized 90s unisex sweater, cozy and chunky knit pullover sweater, alpaca wool sweater, gift for couple, boyfriend gift, fathers day gift",
+  nomeProdotto: "Maglione 'Autunno Dorato'",
+  descrizioneProdotto: "Un maglione giallo ocra con una lavorazione a maglia a rombi, ispirato ai colori delle foglie autunnali che cadono dagli alberi.",
   price: "9,99",
   image: "assets/maglione.png",
   type: "maglione",
@@ -22,8 +22,8 @@ const product: ProductInfoI = {
 
 const product1: ProductInfoI = {
   id : "1",
-  nomeProdotto: "Maglione dello zio",
-  descrizioneProdotto: "Oversized 90s unisex sweater, cozy and chunky knit pullover sweater, alpaca wool sweater, gift for couple, boyfriend gift, fathers day gift",
+  nomeProdotto: "Maglione 'Notte Stellata'",
+  descrizioneProdotto: "Un maglione blu notte con un motivo di stelle bianche, realizzato in lana pregiata per garantire un comfort totale nelle lunghe serate d'inverno",
   price: "999,99",
   image: "assets/maglione2.png",
   type: "maglione",
@@ -43,7 +43,7 @@ const product2: ProductInfoI = {
 const product3: ProductInfoI = {
   id : "3",
   nomeProdotto: "Tshirt British",
-  descrizioneProdotto: "Oversized 90s unisex sweater, cozy and chunky knit pullover sweater, alpaca wool sweater, gift for couple, boyfriend gift, fathers day gift",
+  descrizioneProdotto: "Una t-shirt oversize bianca con una stampa 'progresssive', che ti farà sentire unico e originale, ma forse questo non ti serve.",
   price: "19,99",
   image: "assets/tshirt.png",
   type: "tshirt",

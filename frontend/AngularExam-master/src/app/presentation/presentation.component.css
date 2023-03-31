@@ -18,7 +18,8 @@
 }
 
 .inlineImage{
-  width: 100%;
+  width: 400px;
+  height: 400px;
   align-content: center;
   border-radius: 12px;
   box-shadow: 5px 5px 5px #dedede;
@@ -27,6 +28,16 @@
 .align{
   align-content: center;
 }
+
+.align-l{
+  float: left;
+  color: #2a2929;}
+
+.align-r{
+  float: right;
+  color: #2a2929 ;
+}
+
 
 .inlineGrid{
   text-align: center;
@@ -43,16 +54,20 @@
 .boxContainer{
   width: 25%;
   display: inline-flex;
-  padding: 15pt;
+  padding: 25pt;
 }
 
 .text-story{
+  text-align: center;
   text-align: justify;
+  width: 60%;
 }
 
 .box-story{
-  text-align: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  display: flex;
+  justify-content: center;
 }
 
+.text-center{
+  text-align: center;
+}

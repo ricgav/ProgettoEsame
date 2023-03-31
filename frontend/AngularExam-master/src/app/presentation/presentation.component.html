@@ -1,52 +1,35 @@
 <img src="../../assets/heroImage.jpg">
-<p class="label-product-home">
-  Best Seller
-</p>
+<p class="label-product-home"><b>Best Seller</b></p>
 <div class="inlineGrid">
-  <div class="boxContainer">
+  <div class="boxContainer" *ngFor="let product of newProducts">
     <div>
-      <img class="inlineImage" src="assets/giacca.jpg">
-      <p class="align">
-        Nome prodotto
+      <img class="inlineImage" src="{{product.image}}">
+      <p class="align-l">
+        {{product.nomeProdotto}}
+      </p>
+      <p class="align-r" *ngIf="product.type != 'scarpa'">
+        S / M / L
+      </p>
+      <p class="align-r" *ngIf="product.type === 'scarpa'">
+        38 / 39 / 40
       </p>
     </div>
-  </div>
-  <div class="boxContainer">
-    <div>
-    <img class="inlineImage" src="assets/stivali.jpg">
-    <p class="align">
-      Nome prodotto
-    </p>
-    </div>
-  </div>
-  <div class="boxContainer">
-    <div>
-    <img class="inlineImage" src="assets/scarpe.jpg">
-    <p class="align">
-      Nome prodotto
-    </p>
-    </div>
-  </div>
-  <div class="boxContainer">
-  <div>
-    <img class="inlineImage" src="assets/pants.jpeg">
-    <p class="align">
-      Nome prodotto
-    </p>
-  </div>
-  </div>
-  <div class="boxContainer">
-  <div>
-    <img class="inlineImage" src="assets/cappello.jpg">
-    <p class="align">
-      Nome prodotto
-    </p>
-  </div>
   </div>
 </div>
 <br>
 <div class="box-story">
-  <div class="text-story">  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+  <div class="text-story">
+    <p class="label-product-home"><b>La nostra storia</b></p><br>
+    "E-shop" è un e-commerce genderless che si è guadagnato una grande reputazione tra gli acquirenti che cercano capi di abbigliamento senza limiti di genere. La piattaforma è stata fondata da un gruppo di amici con l'obiettivo di creare un'esperienza di shopping inclusiva e aperta a tutti, senza etichette di genere o stereotipi.
+    <br><br>
+    L'idea di E-shop è nata quando il fondatore ha notato che molte persone si sentivano limitate dalle opzioni di abbigliamento disponibili nei negozi tradizionali, con separazioni nette tra abbigliamento da uomo e da donna. Sentiva che era il momento di creare un luogo in cui tutti potessero trovare vestiti che si adattassero alle loro preferenze personali, piuttosto che essere limitati dalla categoria di genere.
+    <br><br>
+    E-shop offre una vasta gamma di capi d'abbigliamento tra cui t-shirt, felpe, pantaloni, giacche e abiti, tutti senza etichette di genere e con taglie che vanno dalla XS alla XXL. La selezione di capi disponibili su E-shop è caratterizzata da uno stile minimalista e versatile, che si adatta a qualsiasi tipo di personalità o stile.
+    <br><br>
+    Inoltre, E-shop ha scelto di utilizzare materiali sostenibili e di qualità, come il cotone organico e la lana merino, per ridurre l'impatto ambientale del settore della moda.
+    <br><br>
+    Con un sito web semplice da navigare e un servizio clienti sempre disponibile, E-shop è diventato un punto di riferimento per tutti coloro che desiderano acquistare capi d'abbigliamento di alta qualità, senza limiti di genere. Il suo successo è stato accolto con entusiasmo da molte persone che finalmente hanno trovato un posto in cui possono esprimere la loro identità attraverso l'abbigliamento, senza essere costretti in etichette di genere.
+    <br><br>
   </div>
 </div>
 <br>
