@@ -19,7 +19,7 @@ export class LoginComponent {
   submit(username: string, password: string) {
     if (this.username === this.password) {
       localStorage.setItem('loggedUser', this.username);
-      this.toast.success({detail:'Success',summary:"Login effettuat", duration: 3000});
+      this.toast.success({detail:'Success',summary:"Login effettuato", duration: 3000});
       let window = document.getElementById('id01');
       if (window != null) [
         window.style.display = 'none',

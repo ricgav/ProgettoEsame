@@ -17,7 +17,7 @@ export class CartComponent implements OnInit{
     let ls= localStorage.getItem("loggedUser");
     if(!ls){window.alert("Effettua prima il Login"); return}
     let cart= localStorage.getItem("cartStorage");
-    let cartDeserialized = JSON.parse(cart || '{}');
+    let cartDeserialized = JSON.parse(cart || '[]');
     console.warn(cartDeserialized);
     this.cartBox = cartDeserialized;
     let totalAmount = 0;
@@ -38,7 +38,7 @@ export class CartComponent implements OnInit{
       const items = JSON.parse(localStorage.getItem('cartStorage') || '{}');
       const filtered = items.filter((itemI: { id: any; }) => itemI.id !== item.id);
       localStorage.setItem('cartStorage', JSON.stringify(filtered));
-      this.toast.success({detail:'Success',summary:"rimosso l'articolo dal carrello", duration: 3000});
+      this.toast.success({detail:'Success',summary:"Rimosso l'articolo dal carrello", duration: 3000});
       this.cartBox = JSON.parse(localStorage.getItem('cartStorage') || '{}');
       var cartDeserialized = this.cartBox;
       let totalAmount = 0;

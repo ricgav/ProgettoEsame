@@ -24,7 +24,7 @@
     </ng-container>
     <p *ngIf="loggedUser.length <= 0"
        (click)="appServ.currentView = 'login'"
-       onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+      onclick="var el = document.getElementById('id01'); if (el) el.style.display='block';">
       Login
     </p>
     <p *ngIf="loggedUser.length > 0"
