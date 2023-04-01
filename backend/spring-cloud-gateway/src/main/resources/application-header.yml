@@ -1,0 +1,9 @@
+  
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: order-id
+          uri: http://localhost:8081
+          predicates:
+          - Header= store,order

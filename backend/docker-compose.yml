@@ -16,9 +16,10 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       restart: unless-stopped
-  order_service:
+  order-service:
+    build: order-service
     image: order_service
-    container_name: order_service_project
+    container_name: order-service
     platform: linux/amd64
     ports:
       - "8081:8080"
@@ -31,6 +32,22 @@ services:
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=admin
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  spring-cloud-gateway-service:
+    build: ./spring-cloud-gateway
+    image: ares-gateway
+    ports:
+      - "9500:9500"
+    depends_on:
+      - order-service
+    environment:
+      SPRING_PROFILES_ACTIVE: path
+      SPRING_CLOUD_GATEWAY_ROUTES[0]_URI: http://order-service:8081
+      SPRING_CLOUD_GATEWAY_ROUTES[0]_ID: order-id
+      SPRING_CLOUD_GATEWAY_ROUTES[0]_PREDICATES[0]: Path=/orders/*
+      SPRING_CLOUD_GATEWAY_ROUTES[0]_FILTERS[0]: StripPrefix=1
+    networks:
+      - project-network
+
 volumes:
   db-data:
 networks:
