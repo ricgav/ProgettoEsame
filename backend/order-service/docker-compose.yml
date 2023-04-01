@@ -15,26 +15,10 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       restart: unless-stopped
-  pgadmin:
-    container_name: pgadmin4_container2
-    image: dpage/pgadmin4
-    restart: always
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com
-      PGADMIN_DEFAULT_PASSWORD: root
-      PGADMIN_LISTEN_PORT: 50
-    ports:
-      - "5050:50"
-    volumes:
-      - pgadmin-data:/var/lib/pgadmin
-    depends_on:
-      - dbpostgresql
-    networks:
-      - appbootrestnet2
-  app:
+  order_app:
     build: .
-    image: appbootrest2
-    container_name: appbootrest2
+    image: order_service
+    container_name: order_service_stand
     platform: linux/amd64
     ports:
       - "8080:8080"
@@ -49,7 +33,6 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 volumes:
   db-data:
-  pgadmin-data:
 networks:
   appbootrestnet2:
     driver: bridge

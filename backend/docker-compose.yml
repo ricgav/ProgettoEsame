@@ -1,0 +1,38 @@
+version: "3"
+services:
+  dbpostgresqlorder:
+    container_name: dbpostgresqlorder
+    image: "postgres"
+    expose:
+      - "5433"
+    ports:
+      - "5433:5432"
+    volumes:
+      - db-data:/var/lib/dbpostgresqlorder/data
+    networks:
+      - project-network
+    environment:
+      POSTGRES_DB: testdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      restart: unless-stopped
+  order_service:
+    image: order_service
+    container_name: order_service_project
+    platform: linux/amd64
+    ports:
+      - "8081:8080"
+    depends_on:
+      - dbpostgresqlorder
+    networks:
+      - project-network
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresqlorder:5432/testdb #da lasciare 5432 o da cambiare nel config del db
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+volumes:
+  db-data:
+networks:
+  project-network:
+    driver: bridge
