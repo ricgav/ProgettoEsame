@@ -1,5 +1,6 @@
 <div>
   <div *ngIf="appServ.currentNavigationView === 'maglione'">
+    <br>
     <div *ngFor="let product of products" >
       <div class="product-detail" *ngIf="product.type === 'maglione'">
         <img class="product-picture" src="{{product.image}}">

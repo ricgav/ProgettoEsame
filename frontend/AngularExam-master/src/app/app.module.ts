@@ -15,6 +15,7 @@ import { CartComponent } from './cart/cart.component';
 import {FormsModule} from "@angular/forms";
 import { SellerOptionComponent } from './seller-option/seller-option.component';
 import {NgToastModule} from 'ng-angular-popup';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,14 @@ import {NgToastModule} from 'ng-angular-popup';
     ProductComponent,
     OrderComponent,
     CartComponent,
-    SellerOptionComponent
+    SellerOptionComponent,
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        NgToastModule
+        NgToastModule,
+        HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]

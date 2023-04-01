@@ -4,7 +4,6 @@ export interface UserInfoI {
   image: string;
   email: string;
   address: string;
-
   isSeller: boolean;
 }
 

@@ -1,14 +1,14 @@
 <div id="id01" class="modal">
   <form class="modal-content animate" action="https://www.google.com">
     <div class="imgcontainer">
-      <span (click)="clear()" onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
     </div>
     <div class="container">
       <label><b>Username</b></label><br>
       <input placeholder="Enter your name" value="" name="username" type="username" [(ngModel)] ="username">
       <label><b>Password</b></label>
       <input placeholder="Enter your password" value="" name="password" type="password" [(ngModel)]= "password">
-      <button (click)="submit(username,password)">Login</button>
+      <button (click)="appServ.login(username, password)">Login</button>
       <span *ngIf="show">Login success</span>
     </div>
   </form>

@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {UserInfoI, utenti as infoUtenti} from "./data/utenti";
 import {OrderInfoI, ordini as infoOrdini } from "./data/ordini";
 import {ProductInfoI, products as InfoProdotti} from "./data/prodotti";
+import {HttpClient} from "@angular/common/http";
+import {NgToastService} from "ng-angular-popup";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class AppStateService {
 
   private observers: { [evento: string]: ((e: string) => void)[] }; // array di funzioni di callback
 
-  constructor() {
+  constructor(private toast: NgToastService,private http: HttpClient) {
     this.datiUtenti = infoUtenti;
     this.datiOrdini = infoOrdini;
     this.datiProdotti = InfoProdotti;
@@ -69,14 +71,26 @@ export class AppStateService {
     return (this._currentUser.length >= 0 && this.exists(this._currentUser))
   }
 
-  login(utente: string) {
-    if (this._currentUser.length > 0) return;
-    if (this.exists(utente)) {
-      this._currentUser = utente;
-      localStorage.setItem('loggedUser', this._currentUser);
-      for (let callback of this.observers["login"])
-        callback(this._currentUser);
-    }
+  login(username: string, password: string) {
+    this.http.get<UserInfoI[]>('http://localhost:8080/api/v1/users/login?mail='+ username +'&password='+password).subscribe({
+      next: data => {
+        this.toast.success({detail: 'Success', summary: "Login effettuato", duration: 3000});
+
+        let window = document.getElementById('id01');
+        if (window != null) [
+          window.style.display = 'none',
+        ]
+        this._currentUser = username;
+        localStorage.setItem('loggedUser', this._currentUser);
+        for (let callback of this.observers["login"])
+          callback(this._currentUser);
+        console.warn(data);
+      },
+      error: error => {
+        this.toast.error({detail: 'Error', summary: "Username o Password non corretti", duration: 3000});
+        console.error('There was an error!', error);
+      }
+    });
   }
 
   logout() {
