@@ -11,10 +11,9 @@ import {OrderInfoI} from "../data/ordini";
 
 export class OrderComponent {
   orders: any;
-//order: OrderInfoI;
+
   constructor(private appServ: AppStateService) {
     this.orders = appServ.orderInfo(appServ.currentUser);
-
   }
 
 }

@@ -30,6 +30,7 @@ export class HeaderComponent {
 
     appServ.observe("navView", (navView) => {
       this.currentView = navView ;
+      this.appServ.getProductsByType();
       console.log(navView);
     })
   }

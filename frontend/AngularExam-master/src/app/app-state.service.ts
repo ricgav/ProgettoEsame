@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {UserInfoI} from "./data/utenti";
-import {OrderInfoI, ordini as infoOrdini } from "./data/ordini";
-import {ProductInfoI, products as InfoProdotti} from "./data/prodotti";
+import {OrderInfoI} from "./data/ordini";
+import {ProductInfoI} from "./data/prodotti";
 import {HttpClient} from "@angular/common/http";
 import {NgToastService} from "ng-angular-popup";
 
@@ -11,7 +11,7 @@ import {NgToastService} from "ng-angular-popup";
 export class AppStateService {
   private datiUtenti: object;
   private datiOrdini: OrderInfoI[];
-  private datiProdotti: ProductInfoI[]=[];
+  private datiProdotti: ProductInfoI[];
   private _currentUser: string;
   private _currentView: string;
   private isSeller: boolean;
@@ -22,7 +22,7 @@ export class AppStateService {
   constructor(private toast: NgToastService, private http: HttpClient) {
     this.datiUtenti = {};
     this.datiOrdini = [];
-    this.datiProdotti = InfoProdotti;
+    this.datiProdotti = [];
     this._currentUser = "";
     this.isSeller = false;
     this._currentView = "home";
@@ -31,9 +31,8 @@ export class AppStateService {
     this.observers['login'] = [];
     this.observers['view'] = [];
     this.observers['navView'] = [];
-    
-    
   }
+
 
   observe(evento: string, callback: (e: string) => void) {
     if (this.observers.hasOwnProperty(evento)){
@@ -44,7 +43,7 @@ export class AppStateService {
   getUserOrders() {
     this.http.get<OrderInfoI[]>('http://localhost:8081/api/v1/getUserOrders?userId='+ parseInt(localStorage['idUser'])).subscribe({
       next: data => {
-        console.log(data);
+        console.warn(data);
         this.datiOrdini = data;
       },
       error: error => {
@@ -53,7 +52,20 @@ export class AppStateService {
       }
     });
   }
-  
+
+  getProductsByType() {
+    this.http.get<ProductInfoI[]>('http://localhost:8082/api/v1/productsByType?type='+ this.currentNavigationView.toString()).subscribe({
+      next: data => {
+        console.warn(data);
+        this.datiProdotti = data;
+      },
+      error: error => {
+        this.toast.error({detail: 'Error', summary: "Oh cazzo errore!", duration: 3000});
+        console.error('There was an error!', error);
+      }
+    });
+  }
+
   get currentUser(): string {
     return this._currentUser;
   }

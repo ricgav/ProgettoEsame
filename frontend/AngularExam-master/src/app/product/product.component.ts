@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppStateService} from "../app-state.service";
 import {AppComponent} from "../app.component";
 import { NgToastService } from 'ng-angular-popup';
@@ -8,15 +8,18 @@ import { NgToastService } from 'ng-angular-popup';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit{
   products: any;
   cart: string [] = [];
   selectedSize: any;
 
-  constructor(public appServ: AppStateService, private toast: NgToastService) {
-    this.products = appServ.productInfo(appServ.currentUser);
+  ngOnInit() {
+    this.appServ.getProductsByType();
   }
 
+  constructor(public appServ: AppStateService, private toast: NgToastService) {
+    this.products = appServ.productInfo(appServ.currentNavigationView);
+  }
 
   addProductToCart(product: any, selectedSize: string) {
     let ls = localStorage.getItem("loggedUser");
