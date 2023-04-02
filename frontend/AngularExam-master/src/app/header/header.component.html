@@ -22,8 +22,8 @@
 <!--        {{utente}}-->
 <!--      </p>-->
     </ng-container>
-    <p *ngIf="loggedUser.length <= 0"
-       (click)="appServ.currentView = 'login'"
+    <p *ngIf="loggedUser.length == 0"
+
       onclick="var el = document.getElementById('id01'); if (el) el.style.display='block';">
       Login
     </p>

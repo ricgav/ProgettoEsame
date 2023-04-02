@@ -1,5 +1,5 @@
 <app-header></app-header>
-<app-login *ngIf="currentView === 'login'"></app-login>
+<app-login></app-login>
 
 <ng-container *ngIf="currentView != 'product'">
   <app-presentation *ngIf="loggedUser.length === 0 && currentView != 'cart'"></app-presentation>

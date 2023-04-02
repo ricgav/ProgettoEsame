@@ -9,7 +9,7 @@ import {NgToastService} from "ng-angular-popup";
   providedIn: 'root'
 })
 export class AppStateService {
-  private datiUtenti: { [username: string]: UserInfoI};
+  private datiUtenti: object;
   private datiOrdini: { [ordini: string]: OrderInfoI[]};
   private datiProdotti: ProductInfoI[]=[];
   private _currentUser: string;
@@ -18,12 +18,12 @@ export class AppStateService {
 
   private observers: { [evento: string]: ((e: string) => void)[] }; // array di funzioni di callback
 
-  constructor(private toast: NgToastService,private http: HttpClient) {
+  constructor(private toast: NgToastService, private http: HttpClient) {
     this.datiUtenti = {};
     this.datiOrdini = infoOrdini;
     this.datiProdotti = InfoProdotti;
     this._currentUser = "";
-    this._currentView = "profile";
+    this._currentView = "login";
     this._navigationView = "home";
     this.observers = {}; // inizializzo la prop observers
     this.observers['login'] = [];
@@ -46,10 +46,8 @@ export class AppStateService {
     return Object.keys(this.datiUtenti);
   }
 
-  userInfo(utente: string): UserInfoI | null {
-    if (this.datiUtenti.hasOwnProperty(utente))
-      return this.datiUtenti[utente];
-    return null;
+  userInfo(utente: string): object | null {
+    return this.datiUtenti;
   }
 
   orderInfo(utente: string): OrderInfoI[] | null {
@@ -79,8 +77,9 @@ export class AppStateService {
         if (window != null) [
           window.style.display = 'none',
         ]
-        this.datiUtenti[username] = data;
+        this.datiUtenti = data;
         this._currentUser = username;
+        this.currentView = "profile";
         localStorage.setItem('loggedUser', this._currentUser);
         for (let callback of this.observers["login"])
           callback(this._currentUser);
