@@ -23,9 +23,7 @@
 <!--      </p>-->
     </ng-container>
     <p *ngIf="loggedUser.length == 0"
-
-      onclick="var el = document.getElementById('id01'); if (el) el.style.display='block';">
-      Login
+       onclick="document.getElementById('id01').style.display='block'" style="width:auto;">      Login
     </p>
     <p *ngIf="loggedUser.length > 0"
        (click)="appServ.logout()" class="btn-nav">Log out</p>
