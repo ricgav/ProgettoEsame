@@ -2,13 +2,13 @@
 <app-login></app-login>
 
 <ng-container *ngIf="currentView != 'product'">
-  <app-presentation *ngIf="loggedUser.length === 0 && currentView != 'cart'"></app-presentation>
+  <app-presentation *ngIf="currentView === 'home'"></app-presentation>
   <app-cart *ngIf="currentView === 'cart'"></app-cart>
 </ng-container>
 
 <app-product *ngIf="currentView === 'product'"></app-product>
 
-<ng-container *ngIf="loggedUser.length > 0 && currentView != 'product'">
+<ng-container *ngIf="loggedUser.length > 0 && currentView != 'product' && currentView != 'home' ">
   <app-secod-nav></app-secod-nav>
   <app-order *ngIf="currentView === 'order'"></app-order>
   <app-user-profile *ngIf="currentView === 'profile'"></app-user-profile>

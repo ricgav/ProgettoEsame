@@ -25,8 +25,8 @@ export class AppStateService {
     this.datiProdotti = InfoProdotti;
     this._currentUser = "";
     this.isSeller = false;
-    this._currentView = "login";
-    this._navigationView = "home";
+    this._currentView = "home";
+    this._navigationView = "";
     this.observers = {}; // inizializzo la prop observers
     this.observers['login'] = [];
     this.observers['view'] = [];
@@ -114,7 +114,7 @@ export class AppStateService {
   }
 
   set currentView(view: string) {
-    if (view === "profile" || view === "order"|| view === "login" || view === "cart" ||view === "product" || view === 'sell') {
+    if (view === "profile" || view === "order"|| view === "login" || view === "cart" ||view === "product" || view === 'sell' || view === 'home') {
       this._currentView = view;
       for (let callback of this.observers["view"])
         callback(this._currentView);

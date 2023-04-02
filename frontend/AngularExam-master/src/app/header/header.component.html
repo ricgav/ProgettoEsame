@@ -1,6 +1,6 @@
-<a href="index.html">
+<div (click)="appServ.currentView = 'home'">
   <img src="./assets/genderlessIcon.png" width="45" height="60" alt="">
-</a>
+</div>
 <div class="user-logins">
   <p (click)="(appServ.currentView = 'product' ) &&( appServ.currentNavigationView = 'maglione')">Maglioni</p>
   <p (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'tshirt')">T-Shirt</p>
