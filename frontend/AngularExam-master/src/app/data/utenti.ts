@@ -1,21 +1,10 @@
 export interface UserInfoI {
-  nome: string;
-  cognome: string;
-  image: string;
-  email: string;
+  id: number;
+  mail: string;
+  name: string;
+  surname: string;
+  password: string;
   address: string;
-  isSeller: boolean;
+  image:string;
+  seller: boolean;
 }
-
-const user: UserInfoI = {
-  nome: "Alice",
-  cognome: "Corvetto",
-  image: "alice.jpg",
-  email: "test@test.com",
-  address: "Piazza la bomba 4",
-  isSeller: true
-}
-
-export const utenti: { [username: string]: UserInfoI} = {
-  User: user,
-};
