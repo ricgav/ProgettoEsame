@@ -20,9 +20,10 @@
     <img src="assets/profile.png" width="44px">
     </div>
     <p *ngIf="loggedUser.length == 0"
-       onclick="document.getElementById('id01').style.display='block'" style="width:auto;">      Login
+       onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+      Login
     </p>
     <p *ngIf="loggedUser.length > 0"
-       (click)="appServ.logout()" class="btn-nav">Log out</p>
+       (click)="(appServ.currentView = 'home') &&( appServ.logout())" class="btn-nav">Log out</p>
   </div>
 </div>
