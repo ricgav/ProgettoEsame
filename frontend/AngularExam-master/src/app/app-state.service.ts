@@ -9,7 +9,7 @@ import {NgToastService} from "ng-angular-popup";
   providedIn: 'root'
 })
 export class AppStateService {
-  private datiUtenti: { [username: string]: UserInfoI[]};
+  private datiUtenti: { [username: string]: UserInfoI};
   private datiOrdini: { [ordini: string]: OrderInfoI[]};
   private datiProdotti: ProductInfoI[]=[];
   private _currentUser: string;
