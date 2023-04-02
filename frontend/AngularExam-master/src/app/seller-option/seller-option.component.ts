@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { ProductInfoI } from '../data/prodotti';
+import {NgToastService} from "ng-angular-popup";
+
 
 
 @Component({
@@ -10,7 +12,7 @@ import { ProductInfoI } from '../data/prodotti';
 })
 export class SellerOptionComponent {
 
-  constructor(private http: HttpClient) {
+  constructor(private toast: NgToastService, private http: HttpClient) {
 
   }
 
@@ -26,10 +28,15 @@ export class SellerOptionComponent {
     let product = contactForm.value;
     product.sellerId = parseInt(localStorage['idUser']);
     console.log(product);
-  
-    return this.http.post<ProductInfoI>("http://localhost:8082/api/v1/products/create", product);
+    const url = 'http://localhost:8082/api/v1/products/create'; 
     
+    this.http.post(url, product).subscribe(response => {
+      console.log(response); // Risposta del server
+      this.toast.success({detail: 'Success', summary: "Il tuo prodotto è stato caricato con successo!", duration: 3000});
+      contactForm.reset();
+    });    
   }
+
 }
 
 export class type {
