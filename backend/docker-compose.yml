@@ -16,7 +16,8 @@ services:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       restart: unless-stopped
-  order_service:
+  order-service:
+    build: order-service
     image: order_service
     container_name: order_service_project
     platform: linux/amd64
@@ -31,6 +32,71 @@ services:
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=admin
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  dbpostgresqluser:
+    container_name: dbpostgresqluser
+    image: "postgres"
+    expose:
+      - "5434"
+    ports:
+      - "5434:5432"
+    volumes:
+      - db-data:/var/lib/dbpostgresqlorder/data
+    networks:
+      - project-network
+    environment:
+      POSTGRES_DB: testdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      restart: unless-stopped
+  user-service:
+    build: user-service
+    image: user_service
+    container_name: user_service_project
+    platform: linux/amd64
+    ports:
+      - "8083:8080"
+    depends_on:
+      - dbpostgresqluser
+    networks:
+      - project-network
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresqluser:5432/testdb #da lasciare 5432 o da cambiare nel config del db
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+  dbpostgresqlproduct:
+    container_name: dbpostgresqlproduct
+    image: "postgres"
+    expose:
+      - "5435"
+    ports:
+      - "5435:5432"
+    volumes:
+      - db-data:/var/lib/dbpostgresqlproduct/data
+    networks:
+      - project-network
+    environment:
+      POSTGRES_DB: testdb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      restart: unless-stopped
+  product-service:
+    build: product-service
+    image: product_service
+    container_name: product_service_project
+    platform: linux/amd64
+    ports:
+      - "8082:8080"
+    depends_on:
+      - dbpostgresqlproduct
+    networks:
+      - project-network
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresqlproduct:5432/testdb #da lasciare 5432 o da cambiare nel config del db
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
 volumes:
   db-data:
 networks:
