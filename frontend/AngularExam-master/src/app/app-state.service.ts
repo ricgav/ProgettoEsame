@@ -14,6 +14,7 @@ export class AppStateService {
   private datiProdotti: ProductInfoI[]=[];
   private _currentUser: string;
   private _currentView: string;
+  private isSeller: boolean;
   private _navigationView: string;
 
   private observers: { [evento: string]: ((e: string) => void)[] }; // array di funzioni di callback
@@ -23,6 +24,7 @@ export class AppStateService {
     this.datiOrdini = infoOrdini;
     this.datiProdotti = InfoProdotti;
     this._currentUser = "";
+    this.isSeller = false;
     this._currentView = "login";
     this._navigationView = "home";
     this.observers = {}; // inizializzo la prop observers
@@ -70,7 +72,7 @@ export class AppStateService {
   }
 
   login(username: string, password: string) {
-    this.http.get<UserInfoI[]>('http://localhost:8080/api/v1/users/login?mail='+ username +'&password='+password).subscribe({
+    this.http.get<UserInfoI>('http://localhost:8083/api/v1/users/login?mail='+ username +'&password='+password).subscribe({
       next: data => {
         this.toast.success({detail: 'Success', summary: "Login effettuato", duration: 3000});
         let window = document.getElementById('id01');
@@ -78,9 +80,12 @@ export class AppStateService {
           window.style.display = 'none',
         ]
         this.datiUtenti = data;
-        this._currentUser = username;
+        this._currentUser = data.name;
         this.currentView = "profile";
+        this.isSeller = data.seller;
         localStorage.setItem('loggedUser', this._currentUser);
+        localStorage.setItem('idUser', data.id.toString());
+
         for (let callback of this.observers["login"])
           callback(this._currentUser);
         console.warn(data);
@@ -100,6 +105,10 @@ export class AppStateService {
       callback(this._currentUser);
   }
 
+  get seller(): boolean {
+    return this.isSeller;
+  }
+
   get currentView(): string {
     return this._currentView;
   }
@@ -111,6 +120,7 @@ export class AppStateService {
         callback(this._currentView);
     }
   }
+
 
   get currentNavigationView(): string {
     return this._navigationView;

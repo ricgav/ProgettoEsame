@@ -7,6 +7,6 @@
 <button (click)="appServ.currentView = 'cart'"
         [class]="{selected: (currentView === 'cart')}">
   <p>Carrello</p></button>
-<button (click)="appServ.currentView = 'sell'"
+<button *ngIf="appServ.seller == true" (click)="appServ.currentView = 'sell'"
         [class]="{selected: (currentView === 'sell')}">
   <p>Vendi</p></button>

@@ -5,15 +5,15 @@
       <form class="form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
         <p class="p-form">
           <label>Nome Prodotto: </label>
-          <input class="input-form" type="text" name="nomeProdotto" ngModel>
+          <input class="input-form" type="text" name="name" ngModel>
         </p>
         <p class="p-form">
           <label>Descrizione Prodotto: </label>
-          <input class="input-form"type="text" name="descrizioneProdotto" ngModel>
+          <input class="input-form"type="text" name="description" ngModel>
         </p>
         <p class="p-form">
           <label>Prezzo: </label>
-          <input class="input-form" type="text" name="price" ngModel>
+          <input class="input-form" type="number" name="price" ngModel>
         </p>
         <p class="p-form">
           <label>Immagine: </label>
@@ -29,7 +29,7 @@
         </p>
       </form>
       <p>
-        <button class="btn-form" type="submit">Submit</button>
+        <button (click)="onSubmit(contactForm)" class="btn-form" type="submit">Submit</button>
       </p>
     </div>
   </div>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import { ProductInfoI } from '../data/prodotti';
+
 
 @Component({
   selector: 'app-seller-option',
@@ -7,15 +10,25 @@ import { Component } from '@angular/core';
 })
 export class SellerOptionComponent {
 
+  constructor(private http: HttpClient) {
+
+  }
+
   typeList:type[] = [
-    new type("1", "Maglione"),
-    new type('2', 'Pantalone'),
-    new type('3', 'T-Shirt'),
-    new type('4', 'Scarpe')
+    new type("maglione", "Maglione"),
+    new type('pantalone', 'Pantalone'),
+    new type('tshirt', 'T-Shirt'),
+    new type('scarpe', 'Scarpe')
   ];
 
   onSubmit(contactForm) {
     console.log(contactForm.value);
+    let product = contactForm.value;
+    product.sellerId = parseInt(localStorage['idUser']);
+    console.log(product);
+  
+    return this.http.post<ProductInfoI>("http://localhost:8082/api/v1/products/create", product);
+    
   }
 }
 

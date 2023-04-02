@@ -11,6 +11,6 @@ export class UserProfileComponent {
   user: any;
 
   constructor(private appServ: AppStateService) {
-    this.user = appServ.userInfo(appServ.currentUser)
+    this.user = appServ.userInfo(appServ.currentUser);
   }
 }
