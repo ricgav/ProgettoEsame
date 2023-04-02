@@ -13,9 +13,11 @@ export class LoginComponent {
 
   username: string = "";
   password: string = "";
+
   show: boolean = false;
 
-  constructor(public appServ: AppStateService, private toast: NgToastService,  private http: HttpClient) {
+
+  constructor(public appServ: AppStateService, private toast: NgToastService, private http: HttpClient) {
   }
 
   // submit(username: string, password: string) {
@@ -36,22 +38,39 @@ export class LoginComponent {
   //   })
 
 
-
-    // if (this.username === this.password) {
-    //   localStorage.setItem('loggedUser', this.username);
-    //   this.toast.success({detail:'Success',summary:"Login effettuato", duration: 3000});
-    //   let window = document.getElementById('id01');
-    //   if (window != null) [
-    //     window.style.display = 'none',
-    //   ]
-    // }else {
-    //   this.toast.error({detail:'Error',summary:"Username o Password non corretti", duration: 3000});
-    //   return
-    // }
+  // if (this.username === this.password) {
+  //   localStorage.setItem('loggedUser', this.username);
+  //   this.toast.success({detail:'Success',summary:"Login effettuato", duration: 3000});
+  //   let window = document.getElementById('id01');
+  //   if (window != null) [
+  //     window.style.display = 'none',
+  //   ]
+  // }else {
+  //   this.toast.error({detail:'Error',summary:"Username o Password non corretti", duration: 3000});
+  //   return
+  // }
 //     this.clear();
 //   }
 //   clear(){
 //     this.username ="";
 //     this.password = "";
 //   }
+
+
+  onSubmit(contactForm) {
+    console.log(contactForm.value);
+    let product = contactForm.value;
+    console.log(product);
+    const url = 'http://localhost:8083/api/v1/users/create';
+
+    this.http.post(url, product).subscribe(response => {
+      console.log(response); // Risposta del server
+      this.toast.success({
+        detail: 'Success',
+        summary: "Ti sei registrato con successo!",
+        duration: 3000
+      });
+      contactForm.reset();
+    });
+  }
 }

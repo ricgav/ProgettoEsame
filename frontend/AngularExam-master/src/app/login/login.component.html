@@ -10,9 +10,63 @@
       <input placeholder="Enter your password" value="" name="password" type="password" [(ngModel)]= "password">
       <button (click)="appServ.login(username, password)">Login</button>
       <span *ngIf="show">Login success</span>
-    </div>
+      <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Registrati</button>
+      </div>
+
+
+
+
+
+      <div id="id02" class="modal">
+        <form class="modal-content animate" action="https://www.google.com">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+          </div>
+          <div class="container">
+            <form class="form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+              <p class="p-form">
+                <label><b>Email</b></label><br>
+                <input class="input-form" type="text" name="mail" ngModel>
+              </p>
+              <br>
+              <p class="p-form">
+                  <label><b>Name</b></label><br>
+                <input class="input-form"type="text" name="name" ngModel>
+              </p>
+              <br>
+              <p class="p-form">
+                <label><b>Surname</b></label><br>
+                <input class="input-form" type="text" name="surname" ngModel>
+              </p>
+              <br>
+              <p class="p-form">
+                <label><b>Password</b></label><br>
+                <input class="input-form" type="password" name="password" ngModel>
+              </p>
+              <br>
+              <p class="p-form">
+                <label><b>Address</b></label><br>
+                <input class="input-form" type="text" name="address" ngModel>
+              </p>
+              <br>
+              <p class="p-form">
+                <input type="checkbox"><b>Seller</b>
+              </p>
+              <br>
+            </form>
+            <p>
+              <button (click)="onSubmit(contactForm)" class="btn-form" type="submit">Submit</button>
+            </p>
+          </div>
+  </form>
+
+</div>
   </form>
 </div>
+
+
+
+
 
 
 
@@ -20,6 +74,15 @@
 <script>
   // Get the modal
   var modal = document.getElementById('id01');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  var modal = document.getElementById('id02');
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
