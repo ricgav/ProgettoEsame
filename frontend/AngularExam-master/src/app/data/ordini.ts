@@ -1,14 +1,15 @@
 export interface OrderInfoI {
-  orderID: string;
-  nomeProdotto: string;
-  size: string;
-  price: string;
+  id: number;
+  userId : number;
+  date: number;
+  price: number;
+  productsId: number[]
 }
 
 
 let orders: OrderInfoI[] = [];
 
-const order: OrderInfoI = {
+/* const order: OrderInfoI = {
   orderID : "234354",
   nomeProdotto: "Maglione bello Primark",
   size: "L",
@@ -20,10 +21,10 @@ const order1: OrderInfoI = {
   nomeProdotto: "pantalone bello Primark",
   size: "L",
   price: "€ 19,99"
-}
+} */
 
-orders.push(order);
-orders.push(order1);
+//orders.push(order);
+//orders.push(order1);
 
 export const ordini: { [username: string]: OrderInfoI[]} = {
   User: orders,

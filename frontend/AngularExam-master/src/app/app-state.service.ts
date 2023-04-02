@@ -10,7 +10,7 @@ import {NgToastService} from "ng-angular-popup";
 })
 export class AppStateService {
   private datiUtenti: object;
-  private datiOrdini: { [ordini: string]: OrderInfoI[]};
+  private datiOrdini: OrderInfoI[];
   private datiProdotti: ProductInfoI[]=[];
   private _currentUser: string;
   private _currentView: string;
@@ -21,7 +21,7 @@ export class AppStateService {
 
   constructor(private toast: NgToastService, private http: HttpClient) {
     this.datiUtenti = {};
-    this.datiOrdini = infoOrdini;
+    this.datiOrdini = [];
     this.datiProdotti = InfoProdotti;
     this._currentUser = "";
     this.isSeller = false;
@@ -31,6 +31,8 @@ export class AppStateService {
     this.observers['login'] = [];
     this.observers['view'] = [];
     this.observers['navView'] = [];
+    
+    
   }
 
   observe(evento: string, callback: (e: string) => void) {
@@ -39,6 +41,19 @@ export class AppStateService {
     }
   }
 
+  getUserOrders() {
+    this.http.get<OrderInfoI[]>('http://localhost:8081/api/v1/getUserOrders?userId='+ parseInt(localStorage['idUser'])).subscribe({
+      next: data => {
+        console.log(data);
+        this.datiOrdini = data;
+      },
+      error: error => {
+        this.toast.error({detail: 'Error', summary: "Oh cazzo errore!", duration: 3000});
+        console.error('There was an error!', error);
+      }
+    });
+  }
+  
   get currentUser(): string {
     return this._currentUser;
   }
@@ -53,9 +68,7 @@ export class AppStateService {
   }
 
   orderInfo(utente: string): OrderInfoI[] | null {
-    if (this.datiOrdini.hasOwnProperty(utente))
-      return this.datiOrdini[utente];
-    return null;
+    return this.datiOrdini;
   }
 
   productInfo(product: string): ProductInfoI[] | null {
@@ -89,6 +102,7 @@ export class AppStateService {
         for (let callback of this.observers["login"])
           callback(this._currentUser);
         console.warn(data);
+        this.getUserOrders();
       },
       error: error => {
         this.toast.error({detail: 'Error', summary: "Username o Password non corretti", duration: 3000});

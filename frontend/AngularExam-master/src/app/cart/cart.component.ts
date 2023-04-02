@@ -75,7 +75,8 @@ export class CartComponent implements OnInit{
     this.http.post(url, order ).subscribe(response => {
       console.log(response); // Risposta del server
       this.toast.success({detail: 'Success', summary: "Il tuo ordine è stato inviato registrato correttamente!", duration: 4000});
-      localStorage.removeItem("cartStorage")
+      localStorage.removeItem("cartStorage");
+      this.appServ.getUserOrders();
       this.getProductInCart();
     });  
   }
