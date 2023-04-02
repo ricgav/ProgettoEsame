@@ -1,0 +1,11 @@
+  
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: order-id
+          uri: http://order-service:8081
+          predicates:
+          - Path= /orders/*
+          filters:
+          - StripPrefix=1

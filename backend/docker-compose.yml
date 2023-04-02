@@ -1,5 +1,27 @@
 version: "3"
 services:
+  service-registry:
+    build: service-registry
+    image: service-registry:latest
+    platform: linux/amd64
+    container_name: service-registry
+    ports:
+      - "8761:8761"
+    networks:
+      - project-network
+  api-gateway:
+    build: api-gateway
+    image: api-gateway:latest
+    platform: linux/amd64
+    container_name: api-gateway
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://service-registry:8761/eureka/
+    ports:
+      - "9191:9191"
+    depends_on:
+      - service-registry
+    networks:
+      - project-network
   dbpostgresqlorder:
     container_name: dbpostgresqlorder
     image: "postgres"
@@ -19,7 +41,7 @@ services:
   order-service:
     build: order-service
     image: order_service
-    container_name: order_service_project
+    container_name: order-service
     platform: linux/amd64
     ports:
       - "8081:8080"
@@ -32,6 +54,8 @@ services:
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=admin
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - eureka.client.serviceUrl.defaultZone=http://service-registry:8761/eureka/
+      - SPRING_PROFILES_ACTIVE=docker
   dbpostgresqluser:
     container_name: dbpostgresqluser
     image: "postgres"
@@ -51,7 +75,7 @@ services:
   user-service:
     build: user-service
     image: user_service
-    container_name: user_service_project
+    container_name: user-service
     platform: linux/amd64
     ports:
       - "8083:8080"
@@ -64,6 +88,8 @@ services:
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=admin
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - eureka.client.serviceUrl.defaultZone=http://service-registry:8761/eureka/
+      - SPRING_PROFILES_ACTIVE=docker
   dbpostgresqlproduct:
     container_name: dbpostgresqlproduct
     image: "postgres"
@@ -83,7 +109,7 @@ services:
   product-service:
     build: product-service
     image: product_service
-    container_name: product_service_project
+    container_name: product-service
     platform: linux/amd64
     ports:
       - "8082:8080"
@@ -96,6 +122,8 @@ services:
       - SPRING_DATASOURCE_USERNAME=admin
       - SPRING_DATASOURCE_PASSWORD=admin
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - eureka.client.serviceUrl.defaultZone=http://service-registry:8761/eureka/
+      - SPRING_PROFILES_ACTIVE=docker
 
 volumes:
   db-data:
