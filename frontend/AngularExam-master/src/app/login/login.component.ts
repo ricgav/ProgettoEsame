@@ -70,7 +70,13 @@ export class LoginComponent {
         summary: "Ti sei registrato con successo!",
         duration: 3000
       });
+      let window = document.getElementById('id02');
+      if (window != null) [
+        window.style.display = 'none',
+      ]
+      console.warn(contactForm);
       contactForm.reset();
+
     });
   }
 }

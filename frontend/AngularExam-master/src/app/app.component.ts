@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppStateService} from "./app-state.service";
+import {waitForAsync} from "@angular/core/testing";
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import {AppStateService} from "./app-state.service";
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   utenti!: string[];
   loggedUser!: string;
@@ -29,4 +30,9 @@ export class AppComponent {
       this.currentView = view;
     })
   }
+
+  ngOnInit() {
+    this.appServ.getProducts();
+  }
 }
+

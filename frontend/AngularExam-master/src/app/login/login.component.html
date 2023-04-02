@@ -10,7 +10,7 @@
       <input placeholder="Enter your password" value="" name="password" type="password" [(ngModel)]= "password">
       <button (click)="appServ.login(username, password)">Login</button>
       <span *ngIf="show">Login success</span>
-      <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Registrati</button>
+      <button onclick="document.getElementById('id02').style.display='block'">Registrati</button>
       </div>
 
 
@@ -50,7 +50,7 @@
               </p>
               <br>
               <p class="p-form">
-                <input type="checkbox"><b>Seller</b>
+                <input type="checkbox" name="seller"><b>Seller</b>
               </p>
               <br>
             </form>
