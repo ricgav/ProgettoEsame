@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AppStateService} from "../app-state.service";
 import {NgToastService} from "ng-angular-popup";
+import {HttpClient} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +12,7 @@ import {NgToastService} from "ng-angular-popup";
 export class CartComponent implements OnInit{
   cartBox: any;
 
-  constructor(private appServ: AppStateService, private toast: NgToastService) {
+  constructor(private appServ: AppStateService, private toast: NgToastService, private http: HttpClient ) {
   }
 
   getProductInCart() {
@@ -49,5 +51,32 @@ export class CartComponent implements OnInit{
       if (text != null)[
         text.innerHTML= "Riepilogo ordine totale : € "+ totalAmount,
     ]
+  }
+
+  submit() {
+    console.log(this.cartBox);
+    const url = 'http://localhost:8081/api/v1/orders/create'; 
+    let userId = parseInt(localStorage['idUser']);
+    let products: any[] = [];
+    let totPrice: number = 0;
+    for (let el in this.cartBox) {
+      console.log(this.cartBox[el]);
+      let element = this.cartBox[el];
+      products.push(element['id']);
+      totPrice += element['price'];
+    }
+    let order = {
+      userId: userId,
+      productsId: products,
+      date: new Date().getTime(),
+      price: totPrice
+    }; 
+    console.log(order);
+    this.http.post(url, order ).subscribe(response => {
+      console.log(response); // Risposta del server
+      this.toast.success({detail: 'Success', summary: "Il tuo ordine è stato inviato registrato correttamente!", duration: 4000});
+      localStorage.removeItem("cartStorage")
+      this.getProductInCart();
+    });  
   }
 }
