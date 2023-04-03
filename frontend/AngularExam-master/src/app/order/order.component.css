@@ -9,6 +9,10 @@
   align-items: center;
 }
 
+.empty-order{
+  text-align: center;
+}
+
 .single-order-box{
   border-radius: 12px;
   background-color: white;

@@ -6,25 +6,16 @@ import {AppStateService} from "../app-state.service";
   templateUrl: './presentation.component.html',
   styleUrls: ['./presentation.component.css']
 })
-export class PresentationComponent implements OnInit{
+export class PresentationComponent{
   products: any;
 
-  newProducts: any;
 
   constructor(public appServ: AppStateService) {
-    this.products = appServ.productInfo(appServ.currentUser);
-  }
+    let _this = this;
+    this.appServ.getProducts().then(function() {
+      _this.products = appServ.productInfo(appServ.currentUser);
+      _this.products = _this.products.sort(() => Math.random() - 0.5);
+    });
 
-  ngOnInit() {
-    function shuffle(newProducts: any) {
-      newProducts.sort(() => Math.random() - 0.5);
-    }
-    this.newProducts = [];
-    for (let i = 0; i < this.products.length; i++) {
-      this.newProducts[i] = this.products[i];
-    }
-    shuffle(this.newProducts);
-    const firstFiveElem = this.newProducts.slice(0, 5);
-    this.newProducts = firstFiveElem;
   }
 }

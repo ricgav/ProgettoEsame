@@ -1,4 +1,4 @@
-<div class="user-card">
+<div class="user-card" *ngIf="orders.length > 0">
   <div>
     <h3 class="collection-title">Ordini</h3>
     <div class="center-parameters">
@@ -11,6 +11,15 @@
           </div>
         </div>
       </ul>
+    </div>
+  </div>
+</div>
+<div class="user-card" *ngIf="orders.length === 0">
+  <div>
+    <h3 class="collection-title">Carrello</h3>
+    <h3 class="empty-order">Non hai ancora effettuato nessun ordine</h3>
+    <div class="empty-order">
+      <img src="assets/empty_order.png" height="150px" width="150px">
     </div>
   </div>
 </div>

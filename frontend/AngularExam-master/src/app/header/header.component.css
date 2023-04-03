@@ -17,3 +17,38 @@ p{
   border-radius: 12px;
 }
 
+.center-p{
+  margin: auto;
+}
+
+.user-logins-right{
+  display: flex;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: x-large;
+  float: right;
+}
+
+.infoU:hover{
+  background-color: transparent;
+}
+
+.header-layout{
+  display: grid;
+  grid-template-columns: 25% 1fr 25%;
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 100%;
+}
+
+.first{
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.second{
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.third{
+  grid-area: 1 / 3 / 2 / 4;
+}

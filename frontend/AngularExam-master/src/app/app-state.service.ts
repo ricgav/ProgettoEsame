@@ -55,17 +55,21 @@ export class AppStateService {
     });
   }
 
-  getProducts() {
-    this.http.get<ProductInfoI[]>('http://localhost:9191/api/v1/products').subscribe({
-      next: data => {
-        console.warn(data);
-        this.datiProdotti = data;
-      },
-      error: error => {
-        this.toast.error({detail: 'Error', summary: "Disabilitare CORS per proseguire!", duration: 3000});
-        console.error('There was an error!', error);
-      }
-    });
+  async getProducts() {
+    return new Promise((resolve) => {
+      this.http.get<ProductInfoI[]>('http://localhost:9191/api/v1/products').subscribe({
+        next: data => {
+          console.warn(data);
+          this.datiProdotti = data;
+          resolve(true);
+        },
+        error: error => {
+          this.toast.error({detail: 'Error', summary: "Disabilitare CORS per proseguire!", duration: 3000});
+          console.error('There was an error!', error);
+          resolve(false);
+        }
+      });
+    })
   }
 
   get currentUser(): string {

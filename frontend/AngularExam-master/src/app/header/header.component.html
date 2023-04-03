@@ -1,29 +1,36 @@
-<div (click)="appServ.currentView = 'home'">
-  <img src="./assets/genderlessIcon.png" width="45" height="60" alt="">
-</div>
-<div class="user-logins">
-  <p (click)="(appServ.currentView = 'product' ) &&( appServ.currentNavigationView = 'maglione')">Maglioni</p>
-  <p (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'tshirt')">T-Shirt</p>
-  <p (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'pantalone')">Pantaloni</p>
-  <p (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'scarpe')">Scarpe</p>
-</div>
-
-<div class="user-logins">
-  <div *ngIf="loggedUser.length>0" (click)="appServ.currentView = 'cart'"
-  [class]="{selected: (currentView === 'cart')}" >
-    <img src="assets/kart.png" width="44px">
-</div>
-
-  <div class="user-logins">
-    <div *ngIf="loggedUser.length>0" (click)="appServ.currentView = 'profile'"
-      [class]="{selected: (currentView === 'profile')}" >
-    <img src="assets/profile.png" width="44px">
+<div class="header-layout">
+  <div class="first" (click)="appServ.currentView = 'home'">
+    <img src="./assets/genderlessIcon.png" width="45" height="60" alt="">
+  </div>
+  <div class="second">
+    <div class="user-logins">
+      <p class="center-p" (click)="(appServ.currentView = 'product' ) &&( appServ.currentNavigationView = 'maglione')">Maglioni</p>
+      <p class="center-p" (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'tshirt')">T-Shirt</p>
+      <p class="center-p" (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'pantalone')">Pantaloni</p>
+      <p class="center-p" (click)="(appServ.currentView = 'product') &&( appServ.currentNavigationView = 'scarpe')">Scarpe</p>
     </div>
-    <p *ngIf="loggedUser.length == 0"
-       onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
-      Login
-    </p>
-    <p *ngIf="loggedUser.length > 0"
-       (click)="(appServ.currentView = 'home') &&( appServ.logout())" class="btn-nav">Log out</p>
+  </div>
+  <div class="third">
+  <div class="user-logins-right">
+    <div *ngIf="loggedUser.length>0" class="user-logins">
+      <p class="infoU" [textContent]="'Ciao, '+ appServ.currentUser"></p>
+    </div>
+    <div *ngIf="loggedUser.length>0" (click)="appServ.currentView = 'cart'"
+    [class]="{selected: (currentView === 'cart')}" >
+      <img src="assets/kart.png" width="44px" height="44px">
+    </div>
+    <div class="user-logins">
+      <div *ngIf="loggedUser.length>0" (click)="appServ.currentView = 'profile'"
+        [class]="{selected: (currentView === 'profile')}" >
+      <img src="assets/profile.png" width="44px" height="44px">
+      </div>
+      <div onclick="document.getElementById('id01').style.display='block'" style="width:auto;">
+        <img *ngIf="loggedUser.length == 0" src="assets/login.png" height="44px" width="44px">
+      </div>
+      <div (click)="(appServ.currentView = 'home') &&( appServ.logout())">
+        <img *ngIf="loggedUser.length > 0" src="assets/logout.png" height="44px" width="44px" class="btn-nav">
+      </div>
+    </div>
+  </div>
   </div>
 </div>

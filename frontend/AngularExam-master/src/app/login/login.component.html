@@ -1,9 +1,12 @@
 <div id="id01" class="modal">
-  <form class="modal-content animate" action="https://www.google.com">
+  <form class="modal-content animate">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
     </div>
     <div class="container">
+      <div class="login-registration">
+        <img src="assets/iconFinal.png" height="70px" width="140px">
+      </div>
       <label><b>Username</b></label><br>
       <input placeholder="Enter your name" value="" name="username" type="username" [(ngModel)] ="username">
       <label><b>Password</b></label>
@@ -13,33 +16,36 @@
       <button onclick="document.getElementById('id02').style.display='block'">Registrati</button>
       </div>
       <div id="id02" class="modal">
-        <form class="modal-content animate" action="https://www.google.com">
+        <form class="modal-content animate">
           <div class="imgcontainer">
             <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
           </div>
           <div class="container">
             <form class="form" #contactForm="ngForm" (ngSubmit)="appServ.register(contactForm)">
+              <div class="login-registration">
+                <img src="assets/iconFinal.png" height="70px" width="140px">
+              </div>
               <p class="p-form">
                 <label><b>Email</b></label><br>
-                <input class="input-form" type="text" name="mail" ngModel>
+                <input placeholder="Inserisci email" class="input-form" type="text" name="mail" ngModel>
               </p>
               <p class="p-form">
-                  <label><b>Name</b></label><br>
-                <input class="input-form"type="text" name="name" ngModel>
+                  <label><b>Nome</b></label><br>
+                <input placeholder="Inserisci nome" class="input-form"type="text" name="name" ngModel>
               </p>
               <p class="p-form">
-                <label><b>Surname</b></label><br>
-                <input class="input-form" type="text" name="surname" ngModel>
+                <label><b>Cognome</b></label><br>
+                <input placeholder="Inserisci cognome" class="input-form" type="text" name="surname" ngModel>
               </p>
               <p class="p-form">
                 <label><b>Password</b></label><br>
-                <input class="input-form" type="password" name="password" ngModel>
+                <input placeholder="Inserisci password" class="input-form" type="password" name="password" ngModel>
               </p>
               <p class="p-form">
-                <label><b>Address</b></label><br>
-                <input class="input-form" type="text" name="address" ngModel>
+                <label><b>Indirizzo</b></label><br>
+                <input placeholder="Inserisci indirizzo" class="input-form" type="text" name="address" ngModel>
               </p>
-              <label><b>Seleziona foto profilo : </b></label><br>
+              <label><b>Scegli foto profilo </b></label><br>
               <input type="file" (change)="appServ.onFileSelected($event)"/>
               <br>
               <br>
@@ -50,20 +56,13 @@
               </select><br><br>
             </form>
             <p>
-              <button (click)="appServ.register(contactForm)" class="btn-form" type="submit">Submit</button>
+              <button (click)="appServ.register(contactForm)" class="btn-form" type="submit">Registrati</button>
             </p>
           </div>
   </form>
 </div>
   </form>
 </div>
-
-
-
-
-
-
-
 
 <script>
   // Get the modal

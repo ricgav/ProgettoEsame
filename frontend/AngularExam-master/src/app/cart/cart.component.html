@@ -1,4 +1,4 @@
-<div class="user-card">
+<div class="user-card" *ngIf="cartBox.length > 0">
   <div>
     <h3 class="collection-title">Carrello</h3>
     <div class="center-parameters">
@@ -17,5 +17,14 @@
       <span id="totalAmount"></span>
     </div>
     <button (click)="submit()" class="btn-send">INVIA</button>
+  </div>
+</div>
+<div class="user-card" *ngIf="cartBox.length ===   0">
+  <div>
+    <h3 class="collection-title">Carrello</h3>
+    <h3 class="empty-kart">Il tuo carrello è vuoto</h3>
+    <div class="empty-kart">
+      <img src="assets/empty_kart.png" height="150px" width="150px">
+    </div>
   </div>
 </div>
