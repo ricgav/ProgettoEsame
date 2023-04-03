@@ -9,6 +9,14 @@ spring:
           uri: lb://order-service
           predicates:
             - Path=/api/v1/orders/**
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/users/**
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/api/v1/products/**
   application:
     name: api-gateway
 server:

@@ -19,7 +19,7 @@ services:
     build: .
     image: order_service
     container_name: order_service_stand
-    platform: linux/amd64
+    # platform: linux/amd64
     ports:
       - "8080:8080"
     depends_on:
