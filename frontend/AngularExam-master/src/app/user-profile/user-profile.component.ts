@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AppStateService} from "../app-state.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-user-profile',
@@ -7,10 +8,13 @@ import {AppStateService} from "../app-state.service";
   styleUrls: ['./user-profile.component.css']
 })
 
-export class UserProfileComponent {
+export class UserProfileComponent{
   user: any;
+  userImage: any;
 
-  constructor(private appServ: AppStateService) {
+  constructor(private appServ: AppStateService, private sanitizer: DomSanitizer) {
     this.user = appServ.userInfo(appServ.currentUser);
+    this.userImage = sanitizer.bypassSecurityTrustResourceUrl(this.user.image);
+    console.warn(this.userImage);
   }
 }

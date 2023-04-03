@@ -1,8 +1,11 @@
 <div class="user-card">
   <h3 class="collection-title">Profilo</h3>
   <div class="profile-grid">
-    <div class="grid-profile-img">
-      <img class="profile-picture" src="assets/{{user.image}}" width="400">
+    <div class="grid-profile-img" *ngIf="user.image.length >0">
+      <img class="profile-picture" [src]="userImage" width="400">
+    </div>
+    <div class="grid-profile-img" *ngIf="user.image.length === 0">
+      <img class="profile-picture" src="assets/profile.jpg" width="400">
     </div>
     <div class="center-parameters grid-profile-info">
       <h3>Nome: {{user.name}}</h3>

@@ -15,13 +15,10 @@ export class PresentationComponent implements OnInit{
     this.products = appServ.productInfo(appServ.currentUser);
   }
 
-
   ngOnInit() {
-
     function shuffle(newProducts: any) {
       newProducts.sort(() => Math.random() - 0.5);
     }
-
     this.newProducts = [];
     for (let i = 0; i < this.products.length; i++) {
       this.newProducts[i] = this.products[i];
