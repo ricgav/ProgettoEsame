@@ -49,6 +49,9 @@
                 <input class="input-form" type="text" name="address" ngModel>
               </p>
               <br>
+              <input type="file" (change)="onFileSelected($event)" />
+              <br>
+              <br>
               <p class="p-form">
                 <input type="checkbox" name="seller"><b>Seller</b>
               </p>
