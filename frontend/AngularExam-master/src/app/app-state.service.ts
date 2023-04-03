@@ -164,11 +164,11 @@ export class AppStateService {
 
   register(contactForm) {
       console.log(contactForm.value);
-      let product = contactForm.value;
-      product.image = this.fileURL;
-      console.log(product);
+      let userProfile = contactForm.value;
+      userProfile.image = this.fileURL;
+      console.log(userProfile);
       const url = 'http://localhost:8083/api/v1/users/create';
-      this.http.post(url, product).subscribe(response => {
+      this.http.post(url, userProfile).subscribe(response => {
         console.log(response); // Risposta del server
         this.toast.success({
           detail: 'Success',
