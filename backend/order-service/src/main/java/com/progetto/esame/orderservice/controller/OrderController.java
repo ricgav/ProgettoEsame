@@ -19,7 +19,8 @@ import java.util.Optional;
 @RequestMapping("/api/v1")
 public class OrderController {
 
-private final OrderService orderService;
+	@Autowired
+	private final OrderService orderService;
 
 
 	@GetMapping("/orders")

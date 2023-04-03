@@ -14,7 +14,7 @@ package com.progetto.esame.orderservice.service;
 @RequiredArgsConstructor
 
 public class OrderService {
-
+    @Autowired
     private final OrderRepository orderRepository;
 
     @Transactional
