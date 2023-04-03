@@ -6,8 +6,9 @@
         <div class="single-order-box" *ngFor="let order of orders">
           <div class="box-value" >
             <span> Numero d'ordine : {{order.id}}</span><br>
-            <span> Id prodotti : {{order.productsId}}</span><br>
-            <span> Prezzo : {{order.price}}</span><br>
+            <span> Prodotti : {{elencoProdotti}}</span><br>
+            <!--            <span> Id prodotti : {{order.productsId}}</span><br>-->
+            <span> Prezzo : € {{order.price}}</span><br>
           </div>
         </div>
       </ul>

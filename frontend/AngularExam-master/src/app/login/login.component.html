@@ -12,57 +12,48 @@
       <span *ngIf="show">Login success</span>
       <button onclick="document.getElementById('id02').style.display='block'">Registrati</button>
       </div>
-
-
-
-
-
       <div id="id02" class="modal">
         <form class="modal-content animate" action="https://www.google.com">
           <div class="imgcontainer">
             <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
           </div>
           <div class="container">
-            <form class="form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+            <form class="form" #contactForm="ngForm" (ngSubmit)="appServ.register(contactForm)">
               <p class="p-form">
                 <label><b>Email</b></label><br>
                 <input class="input-form" type="text" name="mail" ngModel>
               </p>
-              <br>
               <p class="p-form">
                   <label><b>Name</b></label><br>
                 <input class="input-form"type="text" name="name" ngModel>
               </p>
-              <br>
               <p class="p-form">
                 <label><b>Surname</b></label><br>
                 <input class="input-form" type="text" name="surname" ngModel>
               </p>
-              <br>
               <p class="p-form">
                 <label><b>Password</b></label><br>
                 <input class="input-form" type="password" name="password" ngModel>
               </p>
-              <br>
               <p class="p-form">
                 <label><b>Address</b></label><br>
                 <input class="input-form" type="text" name="address" ngModel>
               </p>
+              <label><b>Seleziona foto profilo : </b></label><br>
+              <input type="file" (change)="appServ.onFileSelected($event)"/>
               <br>
-              <input type="file" (change)="onFileSelected($event)" />
               <br>
-              <br>
-              <p class="p-form">
-                <input type="checkbox" name="seller"><b>Seller</b>
-              </p>
-              <br>
+              <label><b>Sei un venditore?</b></label><br>
+              <select class="selectOption" name="seller" [(ngModel)]="selectedIsSeller" >
+                <option value="true">Si</option>
+                <option value="false">NO</option>
+              </select><br><br>
             </form>
             <p>
-              <button (click)="onSubmit(contactForm)" class="btn-form" type="submit">Submit</button>
+              <button (click)="appServ.register(contactForm)" class="btn-form" type="submit">Submit</button>
             </p>
           </div>
   </form>
-
 </div>
   </form>
 </div>

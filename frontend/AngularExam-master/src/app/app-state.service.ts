@@ -18,6 +18,8 @@ export class AppStateService {
   private _navigationView: string;
 
   private observers: { [evento: string]: ((e: string) => void)[] }; // array di funzioni di callback
+  fileURL: string = "";
+  selectedFile: File = {} as File
 
   constructor(private toast: NgToastService, private http: HttpClient) {
     this.datiUtenti = {};
@@ -92,10 +94,6 @@ export class AppStateService {
     return this.datiUtenti.hasOwnProperty(utente);
   }
 
-  loginState(): boolean {
-    return (this._currentUser.length >= 0 && this.exists(this._currentUser))
-  }
-
   login(username: string, password: string) {
     this.http.get<UserInfoI>('http://localhost:8083/api/v1/users/login?mail='+ username +'&password='+password).subscribe({
       next: data => {
@@ -124,8 +122,12 @@ export class AppStateService {
   }
 
   logout() {
-    if (this._currentUser.length === 0) return;
+    if (this._currentUser.length === 0) {
+      this.toast.warning({detail: 'Error', summary: "Nessun utente loggato al momento", duration: 3000});
+      return;
+    }
     this._currentUser = "";
+    this.toast.success({detail: 'Success', summary: "Utente sloggato correttamente", duration: 3000});
     localStorage.clear();
     for (let callback of this.observers["login"])
       callback(this._currentUser);
@@ -159,4 +161,32 @@ export class AppStateService {
         callback(this._navigationView);
     }
   }
+
+  register(contactForm) {
+      console.log(contactForm.value);
+      let product = contactForm.value;
+      product.image = this.fileURL;
+      console.log(product);
+      const url = 'http://localhost:8083/api/v1/users/create';
+      this.http.post(url, product).subscribe(response => {
+        console.log(response); // Risposta del server
+        this.toast.success({
+          detail: 'Success',
+          summary: "Ti sei registrato con successo!",
+          duration: 3000
+        });
+        let window = document.getElementById('id02');
+        if (window != null) [
+          window.style.display = 'none',
+        ]
+        console.warn(contactForm);
+        contactForm.reset();
+      });
+    }
+
+  onFileSelected(event) {
+      this.selectedFile = <File>event.target.files[0];
+      this.fileURL = URL.createObjectURL(this.selectedFile);
+      console.warn(this.fileURL)
+    }
 }

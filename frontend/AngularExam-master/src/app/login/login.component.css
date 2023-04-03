@@ -4,8 +4,11 @@ input[type=text], input[type=password] {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
   box-sizing: border-box;
+  border-radius: 12px;
+  border-width: 2px;
+  border-color: rgb(215,193,96);
+  height: 42px;
 }
 
 input[type=text], input[type=username] {
@@ -13,8 +16,11 @@ input[type=text], input[type=username] {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
   box-sizing: border-box;
+  border-radius: 12px;
+  border-width: 2px;
+  border-color: rgb(215,193,96);
+  height: 42px;
 }
 
 /* Set a style for all buttons */
@@ -98,6 +104,14 @@ button:hover {
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
+}
+
+.selectOption{
+  border-radius: 12px;
+  border-width: 2px;
+  border-color: rgb(215,193,96);
+  height: 35px;
+  width: 90px;
 }
 
 @-webkit-keyframes animatezoom {
