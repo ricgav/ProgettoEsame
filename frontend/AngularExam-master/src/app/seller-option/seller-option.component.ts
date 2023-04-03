@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { ProductInfoI } from '../data/prodotti';
 import {NgToastService} from "ng-angular-popup";
+import {AppStateService} from "../app-state.service";
 
 
 
@@ -12,7 +13,7 @@ import {NgToastService} from "ng-angular-popup";
 })
 export class SellerOptionComponent {
 
-  constructor(private toast: NgToastService, private http: HttpClient) {
+  constructor(private appServ: AppStateService,private toast: NgToastService, private http: HttpClient) {
 
   }
 
@@ -28,13 +29,14 @@ export class SellerOptionComponent {
     let product = contactForm.value;
     product.sellerId = parseInt(localStorage['idUser']);
     console.log(product);
-    const url = 'http://localhost:8082/api/v1/products/create'; 
-    
+    const url = 'http://localhost:9191/api/v1/products/create';
+
     this.http.post(url, product).subscribe(response => {
       console.log(response); // Risposta del server
       this.toast.success({detail: 'Success', summary: "Il tuo prodotto è stato caricato con successo!", duration: 3000});
+      this.appServ.getProducts();
       contactForm.reset();
-    });    
+    });
   }
 
 }

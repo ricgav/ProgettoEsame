@@ -4,14 +4,14 @@
 <!--  <p id="ares" class="label-product-home"><b>Consigliati da ARES</b></p>-->
   <div class="boxContainer" *ngFor="let product of newProducts">
     <div>
-      <img class="inlineImage" src="{{product.image}}">
+      <img class="inlineImage" src="assets/{{product.image}}">
       <p class="align-l">
         {{product.name}}
       </p>
-      <p class="align-r" *ngIf="product.type != 'scarpa'">
+      <p class="align-r" *ngIf="product.type != 'scarpe'">
         S / M / L
       </p>
-      <p class="align-r" *ngIf="product.type === 'scarpa'">
+      <p class="align-r" *ngIf="product.type === 'scarpe'">
         38 / 39 / 40
       </p>
     </div>

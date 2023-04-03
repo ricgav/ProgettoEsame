@@ -35,7 +35,7 @@ public class OrderController {
 		}
 	}
 
-	@GetMapping("/getUserOrders")
+	@GetMapping("/orders/getUserOrders")
 	public ResponseEntity<?> getUserOrders(@RequestParam long userId) {
 		System.out.println("Get all orders of user...");
 		try {

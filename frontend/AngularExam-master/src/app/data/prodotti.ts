@@ -45,7 +45,7 @@ const product3: ProductInfoI = {
   name: "Tshirt British",
   description: "Una t-shirt oversize bianca con una stampa 'progresssive', che ti farà sentire unico e originale, ma forse questo non ti serve.",
   price: 19,
-  image: "assets/tshirt.png",
+  image: "assets/t-shirt.png",
   type: "tshirt",
   size: ""
 }

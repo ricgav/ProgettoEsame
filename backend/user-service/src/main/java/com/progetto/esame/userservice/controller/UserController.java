@@ -100,7 +100,7 @@ public class UserController {
 		//return _user;
 	}
 
-	@GetMapping("/checkMailAvailable")
+	@GetMapping("/users/checkMailAvailable")
 	public ResponseEntity<?> checkMailAvailable(@RequestParam String mail) {
 		try {
 			Optional<User> optUser = userService.getUserByMail(mail);

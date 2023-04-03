@@ -1,9 +1,8 @@
 <div>
   <div *ngIf="appServ.currentNavigationView === 'maglione'">
-    <br>
     <div *ngFor="let product of products" >
       <div class="product-detail" *ngIf="product.type === 'maglione'">
-        <img class="product-picture" src="{{product.image}}">
+        <img class="product-picture" src="assets/{{product.image}}">
         <div class="product-description">
           <span class="product-title">{{product.name}}</span><br><br>
           <span >{{product.description}}</span><br><br>
@@ -24,7 +23,7 @@
     <div *ngIf="appServ.currentNavigationView === 'pantalone'">
       <div *ngFor="let product of products" >
         <div class="product-detail" *ngIf="product.type === 'pantalone'">
-          <img class="product-picture" src="{{product.image}}">
+          <img class="product-picture" src="assets/{{product.image}}">
           <div class="product-description">
             <span class="product-title">{{product.name}}</span><br><br>
             <span >{{product.description}}</span><br><br>
@@ -45,7 +44,7 @@
   <div *ngIf="appServ.currentNavigationView === 'tshirt'">
     <div *ngFor="let product of products" >
       <div class="product-detail" *ngIf="product.type === 'tshirt'">
-        <img class="product-picture" src="{{product.image}}">
+        <img class="product-picture" src="assets/{{product.image}}">
         <div class="product-description">
           <span class="product-title">{{product.name}}</span><br><br>
           <span >{{product.description}}</span><br><br>
@@ -63,10 +62,10 @@
       </div>
     </div>
   </div>
-  <div *ngIf="appServ.currentNavigationView === 'scarpa'">
+  <div *ngIf="appServ.currentNavigationView === 'scarpe'">
     <div *ngFor="let product of products" >
-      <div class="product-detail" *ngIf="product.type === 'scarpa'">
-        <img class="product-picture" src="{{product.image}}">
+      <div class="product-detail" *ngIf="product.type === 'scarpe'">
+        <img class="product-picture" src="assets/{{product.image}}">
         <div class="product-description">
           <span class="product-title">{{product.name}}</span><br><br>
           <span >{{product.description}}</span><br><br>

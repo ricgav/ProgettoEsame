@@ -55,7 +55,7 @@ export class CartComponent implements OnInit{
 
   submit() {
     console.log(this.cartBox);
-    const url = 'http://localhost:8081/api/v1/orders/create'; 
+    const url = 'http://localhost:9191/api/v1/orders/create';
     let userId = parseInt(localStorage['idUser']);
     let products: any[] = [];
     let totPrice: number = 0;
@@ -70,7 +70,7 @@ export class CartComponent implements OnInit{
       productsId: products,
       date: new Date().getTime(),
       price: totPrice
-    }; 
+    };
     console.log(order);
     this.http.post(url, order ).subscribe(response => {
       console.log(response); // Risposta del server
@@ -78,6 +78,6 @@ export class CartComponent implements OnInit{
       localStorage.removeItem("cartStorage");
       this.appServ.getUserOrders();
       this.getProductInCart();
-    });  
+    });
   }
 }

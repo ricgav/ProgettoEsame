@@ -37,7 +37,7 @@ public class ProductController {
 		}
 	}
 
-	@GetMapping("/productsByType")
+	@GetMapping("/products/productsByType")
 	public ResponseEntity<?> productsByType(@RequestParam String type) {
 		System.out.println("Get all products by type...");
 		try {
@@ -49,7 +49,7 @@ public class ProductController {
 		}
 	}
 
-	@GetMapping("/productsBySeller")
+	@GetMapping("/products/productsBySeller")
 	public ResponseEntity<?> productsBySeller(@RequestParam long sellerId) {
 		System.out.println("Get all products by seller...");
 		try {

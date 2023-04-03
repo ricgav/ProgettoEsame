@@ -43,7 +43,7 @@ export class AppStateService {
   }
 
   getUserOrders() {
-    this.http.get<OrderInfoI[]>('http://localhost:8081/api/v1/getUserOrders?userId='+ parseInt(localStorage['idUser'])).subscribe({
+    this.http.get<OrderInfoI[]>('http://localhost:9191/api/v1/orders/getUserOrders?userId='+ parseInt(localStorage['idUser'])).subscribe({
       next: data => {
         console.warn(data);
         this.datiOrdini = data;
@@ -56,7 +56,7 @@ export class AppStateService {
   }
 
   getProducts() {
-    this.http.get<ProductInfoI[]>('http://localhost:8082/api/v1/products').subscribe({
+    this.http.get<ProductInfoI[]>('http://localhost:9191/api/v1/products').subscribe({
       next: data => {
         console.warn(data);
         this.datiProdotti = data;
@@ -95,7 +95,7 @@ export class AppStateService {
   }
 
   login(username: string, password: string) {
-    this.http.get<UserInfoI>('http://localhost:8083/api/v1/users/login?mail='+ username +'&password='+password).subscribe({
+    this.http.get<UserInfoI>('http://localhost:9191/api/v1/users/login?mail='+ username +'&password='+password).subscribe({
       next: data => {
         this.toast.success({detail: 'Success', summary: "Login effettuato", duration: 3000});
         let window = document.getElementById('id01');
@@ -155,7 +155,7 @@ export class AppStateService {
   }
 
   set currentNavigationView(navView: string) {
-    if (navView === "maglione" || navView === "pantalone" || navView === "tshirt" || navView === "scarpa") {
+    if (navView === "maglione" || navView === "pantalone" || navView === "tshirt" || navView === "scarpe") {
       this._navigationView = navView;
       for (let callback of this.observers["navView"])
         callback(this._navigationView);
@@ -167,20 +167,27 @@ export class AppStateService {
       let userProfile = contactForm.value;
       userProfile.image = this.fileURL;
       console.log(userProfile);
-      const url = 'http://localhost:8083/api/v1/users/create';
-      this.http.post(url, userProfile).subscribe(response => {
-        console.log(response); // Risposta del server
-        this.toast.success({
-          detail: 'Success',
-          summary: "Ti sei registrato con successo!",
-          duration: 3000
-        });
-        let window = document.getElementById('id02');
-        if (window != null) [
-          window.style.display = 'none',
-        ]
-        console.warn(contactForm);
-        contactForm.reset();
+      const url = 'http://localhost:9191/api/v1/users/create';
+      this.http.post(url, userProfile).subscribe( {
+        next: response => {
+          console.log(response); // Risposta del server
+          this.toast.success({
+            detail: 'Success',
+            summary: "Ti sei registrato con successo!",
+            duration: 3000
+          });
+          let window = document.getElementById('id02');
+          if (window != null) [
+            window.style.display = 'none',
+          ]
+          console.warn(contactForm);
+          contactForm.reset();
+        },
+          error: error => {
+          this.toast.error({detail: 'Error', summary: "Email già registrata", duration: 3000});
+          console.error('There was an error!', error);
+        }
+
       });
     }
 
