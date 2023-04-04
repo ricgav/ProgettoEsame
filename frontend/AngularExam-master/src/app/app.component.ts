@@ -8,7 +8,7 @@ import {waitForAsync} from "@angular/core/testing";
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit{
+export class AppComponent{
 
   utenti!: string[];
   loggedUser!: string;
@@ -29,10 +29,6 @@ export class AppComponent implements OnInit{
     appServ.observe("view", (view) =>{
       this.currentView = view;
     })
-  }
-
-  ngOnInit() {
-    this.appServ.getProducts();
   }
 }
 
