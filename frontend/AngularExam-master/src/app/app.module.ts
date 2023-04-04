@@ -1,7 +1,5 @@
 import {NgModule, OnInit} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -36,7 +34,6 @@ import { MyProductsComponent } from './my-products/my-products.component';
   ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         FormsModule,
         NgToastModule,
         HttpClientModule

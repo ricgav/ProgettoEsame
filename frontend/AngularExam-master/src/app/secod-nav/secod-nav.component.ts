@@ -17,7 +17,7 @@ export class SecodNavComponent {
 
     appServ.observe("view", (view) => {
       this.currentView = view;
-      console.log(view);
+      //console.log(view);
     })
   }
 }
