@@ -11,9 +11,9 @@ import {OrderInfoI} from "../data/ordini";
 
 export class OrderComponent {
   orders: any;
-  
+
   constructor(private appServ: AppStateService) {
-    this.orders = appServ.orderInfo(appServ.currentUser);
+    this.orders = appServ.orderInfo();
     console.warn(this.orders.productsId);
   }
 }

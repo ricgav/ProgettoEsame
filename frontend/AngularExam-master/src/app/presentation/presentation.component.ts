@@ -13,7 +13,7 @@ export class PresentationComponent{
   constructor(public appServ: AppStateService) {
     let _this = this;
     this.appServ.getProducts().then(function() {
-      _this.products = appServ.productInfo(appServ.currentUser);
+      _this.products = appServ.productInfo();
       _this.products = _this.products.sort(() => Math.random() - 0.5);
     });
 

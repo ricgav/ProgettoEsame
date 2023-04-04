@@ -13,7 +13,7 @@ export class UserProfileComponent{
   userImage: any;
 
   constructor(private appServ: AppStateService, private sanitizer: DomSanitizer) {
-    this.user = appServ.userInfo(appServ.currentUser);
+    this.user = appServ.userInfo();
     this.userImage = sanitizer.bypassSecurityTrustResourceUrl(this.user.image);
     console.warn(this.userImage);
   }

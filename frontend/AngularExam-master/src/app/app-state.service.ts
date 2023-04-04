@@ -12,6 +12,7 @@ export class AppStateService {
   private datiUtenti: object;
   private datiOrdini: OrderInfoI[];
   private datiProdotti: ProductInfoI[];
+  private myDatiProdotti: ProductInfoI[];
   private _currentUser: string;
   private _currentView: string;
   private isSeller: boolean;
@@ -25,6 +26,7 @@ export class AppStateService {
     this.datiUtenti = {};
     this.datiOrdini = [];
     this.datiProdotti = [];
+    this.myDatiProdotti = [];
     this._currentUser = "";
     this.isSeller = false;
     this._currentView = "home";
@@ -49,7 +51,20 @@ export class AppStateService {
         this.datiOrdini = data;
       },
       error: error => {
-        this.toast.error({detail: 'Error', summary: "Oh cazzo errore!", duration: 3000});
+        this.toast.error({detail: 'Error', summary: "Errore generico", duration: 3000});
+        console.error('There was an error!', error);
+      }
+    });
+  }
+
+  getUserProducts() {
+    this.http.get<ProductInfoI[]>('http://localhost:9191/api/v1/products/productsBySeller?sellerId='+ parseInt(localStorage['idUser'])).subscribe({
+      next: data => {
+        console.warn(data);
+        this.myDatiProdotti = data;
+      },
+      error: error => {
+        this.toast.error({detail: 'Error', summary: "Errore generico", duration: 3000});
         console.error('There was an error!', error);
       }
     });
@@ -81,16 +96,20 @@ export class AppStateService {
     return Object.keys(this.datiUtenti);
   }
 
-  userInfo(utente: string): object | null {
+  userInfo(): object | null {
     return this.datiUtenti;
   }
 
-  orderInfo(utente: string): OrderInfoI[] | null {
+  orderInfo(): OrderInfoI[] | null {
     return this.datiOrdini;
   }
 
-  productInfo(product: string): ProductInfoI[] | null {
+  productInfo(): ProductInfoI[] | null {
     return this.datiProdotti;
+  }
+
+  myProductInfo(): ProductInfoI[] | null {
+    return this.myDatiProdotti;
   }
 
 
@@ -117,6 +136,7 @@ export class AppStateService {
           callback(this._currentUser);
         console.warn(data);
         this.getUserOrders();
+        this.getUserProducts();
       },
       error: error => {
         this.toast.error({detail: 'Error', summary: "Username o Password non corretti", duration: 3000});
@@ -146,7 +166,7 @@ export class AppStateService {
   }
 
   set currentView(view: string) {
-    if (view === "profile" || view === "order"|| view === "login" || view === "cart" ||view === "product" || view === 'sell' || view === 'home') {
+    if (view === "profile" || view === "order"|| view === "login" || view === "cart" ||view === "product" || view === 'sell' || view === 'home' || view === 'myprod' ) {
       this._currentView = view;
       for (let callback of this.observers["view"])
         callback(this._currentView);
@@ -200,4 +220,5 @@ export class AppStateService {
       this.fileURL = URL.createObjectURL(this.selectedFile);
       console.warn(this.fileURL)
     }
+
 }

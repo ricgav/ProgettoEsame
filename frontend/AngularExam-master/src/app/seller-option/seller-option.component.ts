@@ -35,6 +35,7 @@ export class SellerOptionComponent {
       console.log(response); // Risposta del server
       this.toast.success({detail: 'Success', summary: "Il tuo prodotto è stato caricato con successo!", duration: 3000});
       this.appServ.getProducts();
+      this.appServ.getUserProducts();
       contactForm.reset();
     });
   }

@@ -16,6 +16,7 @@ import {FormsModule} from "@angular/forms";
 import { SellerOptionComponent } from './seller-option/seller-option.component';
 import {NgToastModule} from 'ng-angular-popup';
 import { HttpClientModule } from '@angular/common/http';
+import { MyProductsComponent } from './my-products/my-products.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     OrderComponent,
     CartComponent,
     SellerOptionComponent,
+    MyProductsComponent,
   ],
     imports: [
         BrowserModule,

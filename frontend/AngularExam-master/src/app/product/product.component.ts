@@ -14,7 +14,7 @@ export class ProductComponent{
   selectedSize: any;
 
   constructor(public appServ: AppStateService, private toast: NgToastService) {
-    this.products = appServ.productInfo(appServ.currentNavigationView);
+    this.products = appServ.productInfo();
   }
 
   addProductToCart(product: any, selectedSize: string) {

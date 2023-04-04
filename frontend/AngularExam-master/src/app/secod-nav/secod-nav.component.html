@@ -10,3 +10,6 @@
 <button *ngIf="appServ.seller == true" (click)="appServ.currentView = 'sell'"
         [class]="{selected: (currentView === 'sell')}">
   <p>Vendi</p></button>
+<button *ngIf="appServ.seller == true" (click)="appServ.currentView = 'myprod'"
+        [class]="{selected: (currentView === 'myprod')}">
+  <p>I miei prodotti</p></button>

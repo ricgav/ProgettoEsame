@@ -1,0 +1,27 @@
+<div class="user-card" *ngIf="products.length > 0">
+  <div>
+    <h3 class="collection-title">I miei prodotti</h3>
+    <br>
+    <div *ngFor="let product of products" >
+    <div class="product-detail">
+      <img class="product-picture" src="assets/{{product.image}}">
+      <div class="product-description">
+        <span class="product-title">{{product.name}}</span><br><br>
+        <span >{{product.description}}</span><br><br>
+        <span>Price: <strong>€ {{product.price}}</strong></span><br><br>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="user-card" *ngIf="products.length === 0">
+  <div>
+    <h3 class="collection-title">I miei Prodotti</h3>
+    <h3 class="empty-order">Non hai ancora caricato prodotti</h3>
+    <div class="empty-order">
+      <img src="assets/myProducts.png" height="150px" width="150px">
+    </div>
+    <br>
+  </div>
+</div>
+
