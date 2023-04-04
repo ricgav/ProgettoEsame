@@ -15,7 +15,10 @@ export class PresentationComponent{
     this.appServ.getProducts().then(function() {
       _this.products = appServ.productInfo();
       _this.products = _this.products.sort(() => Math.random() - 0.5);
+      _this.products = _this.products.slice(0, 5);
     });
+
+
 
   }
 }
